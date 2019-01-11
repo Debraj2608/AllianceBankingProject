@@ -1,0 +1,31 @@
+body {
+	background: white;
+}
+
+.jumbotron {
+	background: url('images/jobsearch.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+.jumbotron h1 {
+	font-family: 'Shift', sans-serif;
+	font-weight: bold;
+}
+
+.grandParentContaniner {
+	display: table;
+	margin: 0 auto;
+}
+
+.parentContainer {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.form-action {
+	align: middle;
+	width: 300px;
+	margin: 0 auto;
+}

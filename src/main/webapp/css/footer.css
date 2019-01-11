@@ -1,0 +1,10 @@
+@charset "ISO-8859-1";
+
+.footer {
+	background-color: lightblue;
+	color: black;
+	text-align: center;
+	font-size: 20px;
+	font-size: bold;
+	font-style: sans-serif;
+}

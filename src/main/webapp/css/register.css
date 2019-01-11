@@ -1,0 +1,21 @@
+@charset "ISO-8859-1";
+
+#fullform {
+	background-color: transparent;
+}
+
+.form-actions {
+	margin: 0;
+	background-color: transparent;
+	text-align: center;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.row::after {
+	content: "";
+	clear: both;
+	display: table;
+}
