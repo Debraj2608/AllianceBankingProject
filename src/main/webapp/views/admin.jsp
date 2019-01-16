@@ -9,9 +9,10 @@
 </head>
 <body>
 
-welcome Administrator
+welcome Administrator<br>
 
-<a href="AdminDispController">Show Un-approved Request</a>
+<a href="AdminDispController">Show Un-approved Request</a><br>
+<a href="AdminFundTransferActivationController">Show Un-approved Fund Transfer Activation Requests</a>
 	
 
 

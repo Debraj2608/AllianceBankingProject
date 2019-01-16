@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page import="com.alliance.model.UserModel" language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -63,6 +63,18 @@
 										class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
 								<li><a href="UpdatePageRedirectController"><span
 										class="glyphicon glyphicon-pencil"></span> Update Profile </a></li>
+								<%UserModel currentUser = (UserModel)session.getAttribute("userRecord"); 
+									boolean status = currentUser.isFundsTransferStatus();
+									if(status==false)
+									{%>
+								<li><a href="FundTransferRequestController"><span
+										class="glyphicon glyphicon-pencil"></span> Request for transfer services </a></li>
+										<%} 
+										else
+										{%>			
+								<li><a href="TransferPageRefirectController"><span
+										class="glyphicon glyphicon-pencil"></span> Transfer Funds </a></li>
+										<% }%>
 							</ul>
 						</div>
 						<!-- /.navbar-collapse -->

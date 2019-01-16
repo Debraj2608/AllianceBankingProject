@@ -17,7 +17,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body style="background-color: lightblue;">
-	<%@include file="header.jsp"%>
+	<%@include file="profileheader.jsp"%>
 	<div class="container">
 		<div class='text-center'>
 			<h1>Update Details</h1>

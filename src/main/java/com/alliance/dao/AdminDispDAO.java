@@ -11,7 +11,7 @@ import com.alliance.util.HibernateUtil;
 
 public class AdminDispDAO {
 	
-	@SuppressWarnings("unchecked")
+	
 	public List<UserModel> returnUnapproved()
 	{ 
 		List<UserModel> al=new ArrayList<UserModel>();

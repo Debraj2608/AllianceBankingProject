@@ -30,6 +30,7 @@ public class UserModel implements Serializable
 	private String occupation;
 	private String customerID;
 	private String password;
+	private boolean fundsTransferStatus;
 	private AccountModel accountModel;
 	public UserModel() 
 	{
@@ -123,6 +124,13 @@ public class UserModel implements Serializable
 		this.password = password;
 	}
 	
+	public boolean isFundsTransferStatus() {
+		return fundsTransferStatus;
+	}
+	public void setFundsTransferStatus(boolean fundsTransferStatus) {
+		this.fundsTransferStatus = fundsTransferStatus;
+	}
+
 	@OneToOne(cascade = CascadeType.ALL)
 	public AccountModel getAccountModel() {
 		return accountModel;

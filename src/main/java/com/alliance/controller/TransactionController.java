@@ -48,12 +48,12 @@ public class TransactionController extends HttpServlet {
 		HttpSession session=request.getSession();
 		UserModel user = (UserModel) session.getAttribute("userRecord");
 		GetAccountDAO getAccountDAO= new GetAccountDAO();
-		String custID = user.getAccountModel().getAccount_no();
-		AccountModel acc_no=getAccountDAO.getAccountNumber(custID);
+		String custID = user.getCustomerID();
+		String debitAccount=getAccountDAO.getAccountNumber(custID);
 		
-		String account=request.getParameter("account_number");
+		String creditAccount=request.getParameter("account_number");
 		AccountModel account1=new AccountModel();
-		account1.setAccount_no(account);
+		account1.setAccount_no(creditAccount);
 		double t_amount=Double.parseDouble(request.getParameter("t_amount"));
 		TransactionModel transactionModel= new TransactionModel();
 		TransactionModel transactionModel1= new TransactionModel();
@@ -62,7 +62,7 @@ public class TransactionController extends HttpServlet {
 		List<String> as=autoGenTransaction.getTransactionID();
 		AccountModel accountModel = new AccountModel();
 		//for from-------------------------------------------------------
-		transactionModel.setAccountModel(acc_no);
+		//transactionModel.setAccountModel(acc_no);
 		Date d= new Date();
 		transactionModel.setTransaction_id(as.get(0));
 		transactionModel.setTransaction_date(d);
@@ -71,14 +71,14 @@ public class TransactionController extends HttpServlet {
 		//-----------------------------------------------------------------
 		
 		//for to----------------------------------------------------------
-		transactionModel1.setAccountModel(account1);
+		//transactionModel1.setAccountModel(account1);
 		Date d1= new Date();
 		transactionModel1.setTransaction_id(as.get(1));
 		transactionModel1.setTransaction_date(d1);
 		transactionModel1.setTransaction_amount(t_amount);
 		transactionModel1.setTransaction_type("Deposit");
 		TransactionBO tb= new TransactionBO();
-		boolean status= tb.doTransaction(tm,transactionModel1, account);
+		boolean status= tb.doTransaction(transactionModel,transactionModel1, creditAccount);
 		RequestDispatcher view = null;
 		if(status)
 		{

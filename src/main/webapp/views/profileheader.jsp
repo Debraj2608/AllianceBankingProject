@@ -20,7 +20,7 @@
 		<div class="header-left">
 			&nbsp;&nbsp;&nbsp; <a href="IndexController">Home</a> &nbsp;&nbsp;&nbsp; <a
 				href="ContactButtonController">Contact</a> &nbsp;&nbsp;&nbsp; <a
-				href="AboutButtonController">About</a> &nbsp;&nbsp;&nbsp; <a href="RegisterRedirectController">Log Out</a>
+				href="AboutButtonController">About</a> &nbsp;&nbsp;&nbsp; <a href="IndexController">Log Out</a>
 			&nbsp;&nbsp;&nbsp; 
 		</div>
 	</div>

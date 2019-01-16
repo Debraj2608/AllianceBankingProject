@@ -127,6 +127,34 @@
   	<servlet-name>TransactionController</servlet-name>
   	<servlet-class>com.alliance.controller.TransactionController</servlet-class>
   </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>TransferPageRefirectController</display-name>
+  	<servlet-name>TransferPageRefirectController</servlet-name>
+  	<servlet-class>com.alliance.controller.TransferPageRefirectController</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>FundTransferRequestController</display-name>
+  	<servlet-name>FundTransferRequestController</servlet-name>
+  	<servlet-class>com.alliance.controller.FundTransferRequestController</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>AdminFundTransferActivationController</display-name>
+  	<servlet-name>AdminFundTransferActivationController</servlet-name>
+  	<servlet-class>com.alliance.controller.AdminFundTransferActivationController</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>AdminLinkTransferFundsController</display-name>
+  	<servlet-name>AdminLinkTransferFundsController</servlet-name>
+  	<servlet-class>com.alliance.controller.AdminLinkTransferFundsController</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>Register1Controller</servlet-name>
   	<url-pattern>/Register1Controller</url-pattern>
@@ -179,5 +207,21 @@
     <servlet-mapping>
     	<servlet-name>TransactionController</servlet-name>
     	<url-pattern>/TransactionController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>TransferPageRefirectController</servlet-name>
+    	<url-pattern>/TransferPageRefirectController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>FundTransferRequestController</servlet-name>
+    	<url-pattern>/FundTransferRequestController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>AdminFundTransferActivationController</servlet-name>
+    	<url-pattern>/AdminFundTransferActivationController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>AdminLinkTransferFundsController</servlet-name>
+    	<url-pattern>/AdminLinkTransferFundsController</url-pattern>
     </servlet-mapping>
 </web-app>
