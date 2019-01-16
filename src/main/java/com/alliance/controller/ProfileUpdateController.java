@@ -21,16 +21,12 @@ public class ProfileUpdateController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-	}
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
 		RequestDispatcher rd = null;
 		ProfileUpdateBO pubo = new ProfileUpdateBO();
 		UserModel um = new UserModel();
-		HttpSession session=request.getSession();
-		String userid=(String) session.getAttribute("userID");
-		String passold=(String) session.getAttribute("password");
+		HttpSession session = request.getSession();
+		UserModel u1 = (UserModel) session.getAttribute("userRecord");
+		String userid=u1.getCustomerID();
 		String cno = request.getParameter("cno");
 		String city = request.getParameter("city");
 		String occu = request.getParameter("occupation");
@@ -40,13 +36,15 @@ public class ProfileUpdateController extends HttpServlet {
 		um.setOccupation(occu);
 		um.setPassword(passnew);
 		um.setCustomerID(userid);
-		boolean b=pubo.update(um);
-		if(b) {
-			rd=request.getRequestDispatcher("views/success.jsp");
+		boolean b = false;
+		b = pubo.update(um);
+		System.out.println("ProfileUpdateController");
+		if (b) {
+			System.out.println(b);
+			rd = request.getRequestDispatcher("views/profile.jsp");
+		} else {
+			rd = request.getRequestDispatcher("views/error.jsp");
 		}
-		else {
-			rd=request.getRequestDispatcher("views/error.jsp");
-		}
+		rd.forward(request, response);
 	}
-
 }

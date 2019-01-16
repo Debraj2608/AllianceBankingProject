@@ -7,23 +7,21 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.alliance.bo.AdminLinkBO;
-import com.alliance.model.AccountModel;
+import com.alliance.bo.DeleteAccountBO;
 import com.alliance.model.UserModel;
-import com.alliance.util.AutoGenAccno;
-import com.alliance.util.SendMail;
 
 /**
- * Servlet implementation class AdminLinkController
+ * Servlet implementation class DeleteAccountController
  */
-public class AdminLinkController extends HttpServlet {
+public class DeleteAccountController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminLinkController() {
+    public DeleteAccountController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,30 +30,20 @@ public class AdminLinkController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		AdminLinkBO ab=new AdminLinkBO();
-		AccountModel am=new AccountModel();
-		UserModel um = new UserModel();
-		AutoGenAccno ag=new AutoGenAccno();
-		um.setCustomerID(request.getParameter("module"));
-		um.setAccountModel(am);
-		am.setAccount_no(ag.getAccountNumber());
-		Boolean status=ab.insertDetails(am);
-		RequestDispatcher rs=null;
-		String ys="This user is Linked";
-		String no="Unable to link this User";
+		DeleteAccountBO deleteAccBO = new DeleteAccountBO();
+		HttpSession session = request.getSession(false);
+		UserModel model = (UserModel) session.getAttribute("userRecord");
+		boolean status = deleteAccBO.deleteAccount(model);
+		RequestDispatcher view = null;
 		if(status)
 		{
-			 rs= request.getRequestDispatcher("views/AccountApproved.jsp");
-			 request.setAttribute("msg",ys);
+			view = request.getRequestDispatcher("views/success.jsp");
 		}
 		else
 		{
-			 rs= request.getRequestDispatcher("views/AccountNotApproved.jsp");
-			 request.setAttribute("msg",no);
+			view = request.getRequestDispatcher("views/error.jsp");
 		}
-		rs.forward(request, response);
-		
-		
+		view.forward(request, response);
 	}
 
 	/**

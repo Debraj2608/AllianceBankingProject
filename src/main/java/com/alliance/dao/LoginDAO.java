@@ -8,5 +8,5 @@ import com.alliance.model.UserModel;
 
 public interface LoginDAO {
 	
-	public Boolean validate(UserModel lm);
+	public UserModel validate(UserModel um);
 }

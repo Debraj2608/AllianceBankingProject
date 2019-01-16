@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.alliance.bo.LoginBO;
 import com.alliance.model.UserModel;
@@ -31,20 +32,23 @@ public class LoginController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LoginBO loginBO = new LoginBO();
-		UserModel loginModel = new UserModel();
-		RequestDispatcher view = null;
+		UserModel userModel = new UserModel();
+		RequestDispatcher view = null;	
 		String userID = request.getParameter("username");
 		String password = request.getParameter("password");
-		loginModel.setCustomerID(userID);
-		loginModel.setPassword(password);
-		boolean validate = false;
+		
+		userModel.setCustomerID(userID);
+		userModel.setPassword(password);
+		UserModel userRecord = null;
 		try {
-			validate = loginBO.validate(loginModel);
+			userRecord =loginBO.validate(userModel);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		if(validate)
+		if(userRecord!=null)
 		{
+			HttpSession session = request.getSession();
+			session.setAttribute("userRecord", userRecord); 
 			view = request.getRequestDispatcher("views/profile.jsp");
 		}
 		else

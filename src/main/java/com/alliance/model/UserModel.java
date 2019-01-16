@@ -3,9 +3,11 @@ package com.alliance.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -28,7 +30,7 @@ public class UserModel implements Serializable
 	private String occupation;
 	private String customerID;
 	private String password;
-	
+	private AccountModel accountModel;
 	public UserModel() 
 	{
 		super();
@@ -119,5 +121,14 @@ public class UserModel implements Serializable
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	public AccountModel getAccountModel() {
+		return accountModel;
+	}
+	public void setAccountModel(AccountModel accountModel) {
+		this.accountModel = accountModel;
 	}	
+	
 }

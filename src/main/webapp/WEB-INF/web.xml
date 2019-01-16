@@ -13,6 +13,12 @@
   	<servlet-name>HomePageController</servlet-name>
   	<servlet-class>com.alliance.controller.HomePageController</servlet-class>
   </servlet>
+    <servlet>
+  	<description></description>
+  	<display-name>ProfileUpdateController</display-name>
+  	<servlet-name>ProfileUpdateController</servlet-name>
+  	<servlet-class>com.alliance.controller.ProfileUpdateController</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>HomePageController</servlet-name>
   	<url-pattern>/HomePageController</url-pattern>
@@ -106,12 +112,20 @@
   	<servlet-name>UpdatePageRedirectController</servlet-name>
   	<servlet-class>com.alliance.controller.UpdatePageRedirectController</servlet-class>
   </servlet>
+  
   <servlet>
   	<description>
   	</description>
-  	<display-name>ProfileUpdaterController</display-name>
-  	<servlet-name>ProfileUpdaterController</servlet-name>
-  	<servlet-class>com.alliance.controller.ProfileUpdaterController</servlet-class>
+  	<display-name>DeleteAccountController</display-name>
+  	<servlet-name>DeleteAccountController</servlet-name>
+  	<servlet-class>com.alliance.controller.DeleteAccountController</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>TransactionController</display-name>
+  	<servlet-name>TransactionController</servlet-name>
+  	<servlet-class>com.alliance.controller.TransactionController</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>Register1Controller</servlet-name>
@@ -153,8 +167,17 @@
   	<servlet-name>UpdatePageRedirectController</servlet-name>
   	<url-pattern>/UpdatePageRedirectController</url-pattern>
   </servlet-mapping>
+  
   <servlet-mapping>
+  	<servlet-name>DeleteAccountController</servlet-name>
+  	<url-pattern>/DeleteAccountController</url-pattern>
+  </servlet-mapping>
+    <servlet-mapping>
   	<servlet-name>ProfileUpdateController</servlet-name>
   	<url-pattern>/ProfileUpdateController</url-pattern>
   </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>TransactionController</servlet-name>
+    	<url-pattern>/TransactionController</url-pattern>
+    </servlet-mapping>
 </web-app>

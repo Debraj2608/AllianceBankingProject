@@ -9,10 +9,11 @@ import com.alliance.model.UserModel;
 public class LoginBO 
 {
 	LoginDAO ld = new LoginDAOimpl();
-	public boolean validate(UserModel lm) throws SQLException 
+	public UserModel validate(UserModel um) throws SQLException 
 	{
-		Boolean status = false;
-		 status = ld.validate(lm);
-		return status;
+		
+		UserModel userRecord = ld.validate(um);
+		return userRecord;
+		
 	}
 }

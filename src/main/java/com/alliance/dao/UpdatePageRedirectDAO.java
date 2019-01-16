@@ -2,38 +2,23 @@ package com.alliance.dao;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
-
 import com.alliance.model.UserModel;
 import com.alliance.util.HibernateUtil;
 
-public class ProfileUpdateDAO {
+public class UpdatePageRedirectDAO {
 
-	public boolean update(UserModel um) {
-
+	public UserModel initialize(String customerID) {
 		Transaction tx = null;
-		boolean status = false;
+		UserModel um = new UserModel();
 		Session session = HibernateUtil.getSessionFactory();
 		tx = session.beginTransaction();
-		String city = um.getCity();
-		String cno = um.getContactNumber();
-		String cid = um.getCustomerID();
-		String occu = um.getOccupation();
-		String pass = um.getPassword();
-		UserModel u = (UserModel) session.get(UserModel.class, um.getCustomerID());
-		try 
-		{
-			u.setCity(city);
-
-			u.setContactNumber(cno);
-
-			u.setPassword(pass);
-
-			u.setOccupation(occu);
-
-			session.saveOrUpdate(u);
-			
-			status = true;
+		UserModel u = (UserModel) session.get(UserModel.class, customerID);
+		try {
+			um.setCustomerID(customerID);
+			um.setCity(u.getCity());
+			um.setContactNumber(u.getContactNumber());
+			um.setOccupation(u.getOccupation());
+			um.setPassword(u.getPassword());
 			tx.commit();
 
 			/*
@@ -61,13 +46,11 @@ public class ProfileUpdateDAO {
 			 * 
 			 * }
 			 */
-
 		} catch (Exception e) {
-
-			status = false;
+			System.out.println(e.getMessage());
 		} finally {
 			session.close();
 		}
-		return status;
+		return um;
 	}
 }
