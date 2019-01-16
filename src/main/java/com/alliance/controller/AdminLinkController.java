@@ -32,14 +32,13 @@ public class AdminLinkController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		AdminLinkBO ab=new AdminLinkBO();
-		AccountModel am=new AccountModel();
-		UserModel um = new UserModel();
-		AutoGenAccno ag=new AutoGenAccno();
-		um.setCustomerID(request.getParameter("module"));
-		um.setAccountModel(am);
-		am.setAccount_no(ag.getAccountNumber());
-		Boolean status=ab.insertDetails(am);
+		AdminLinkBO adminLinkBO=new AdminLinkBO();
+		AccountModel accountModel=new AccountModel();
+		UserModel userModel = new UserModel();
+		AutoGenAccno autoGenAccountNo=new AutoGenAccno();
+		userModel.setCustomerID(request.getParameter("module"));
+		accountModel.setAccount_no(autoGenAccountNo.getAccountNumber());
+		Boolean status=adminLinkBO.insertDetails(accountModel,userModel);
 		RequestDispatcher rs=null;
 		String ys="This user is Linked";
 		String no="Unable to link this User";
@@ -54,10 +53,7 @@ public class AdminLinkController extends HttpServlet {
 			 request.setAttribute("msg",no);
 		}
 		rs.forward(request, response);
-		
-		
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -65,5 +61,4 @@ public class AdminLinkController extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }
