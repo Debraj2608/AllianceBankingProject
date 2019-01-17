@@ -4,6 +4,7 @@ import com.alliance.dao.GetAccountDAO;
 import com.alliance.dao.TransactionDAO;
 import com.alliance.model.AccountModel;
 import com.alliance.model.TransactionModel;
+import com.alliance.model.UserModel;
 
 public class TransactionBO {
 	
@@ -20,9 +21,11 @@ public class TransactionBO {
 		GetAccountDAO gad= new GetAccountDAO();
 		//for from------------------------------------------------------------
 		AccountModel debitAccountInfo=gad.getAccountObject(acc_no_from);
+		//double old_balance=(debitAccountInfo.getBalance());
 		double old_balance=(debitAccountInfo.getBalance());
 		double new_balance=old_balance-t_amount;
-		debitAccountInfo.setBalance((new_balance));
+		//debitAccountInfo.setBalance((new_balance));
+		debitAccountInfo.setBalance(new_balance);
 		//-------------------------------------------------------------
 		
 		//for to----------------------------------------------------------

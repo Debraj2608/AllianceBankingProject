@@ -49,8 +49,8 @@ public class TransactionController extends HttpServlet {
 		UserModel user = (UserModel) session.getAttribute("userRecord");
 		GetAccountDAO getAccountDAO= new GetAccountDAO();
 		String debitAccount = user.getAccountModel().getAccount_no();  
-		//String debitAccount=getAccountDAO.getAccountNumber(custID);
-		
+		//String debitAccount=getAccountDAO.getAccountNumber(user.getCustomerID());
+		System.out.println(debitAccount);
 		String creditAccount=request.getParameter("account_number");
 		AccountModel accountCredit=new AccountModel();
 		accountCredit.setAccount_no(creditAccount);
@@ -63,11 +63,11 @@ public class TransactionController extends HttpServlet {
 		AccountModel accountDebit = new AccountModel();
 		//for from-----------------------------------------------------------
 		//transactionModel.setAccountModel(acc_no);
- 
+		accountDebit.setAccount_no(debitAccount);
 		transactionModelDebit.setTransaction_id(as.get(0));
 		transactionModelDebit.setTransaction_date(new Date());
 		transactionModelDebit.setTransaction_amount(t_amount);
-		transactionModelDebit.setTransaction_type("Withdrawal");
+		transactionModelDebit.setTransaction_type("debit");
 		//-------------------------------------------------------------------
 		
 		//for to-------------------------------------------------------------
@@ -76,9 +76,9 @@ public class TransactionController extends HttpServlet {
 		transactionModelCredit.setTransaction_id(as.get(1));
 		transactionModelCredit.setTransaction_date(new Date());
 		transactionModelCredit.setTransaction_amount(t_amount);
-		transactionModelCredit.setTransaction_type("Deposit");
-		TransactionBO tb= new TransactionBO();
-		boolean status= tb.doTransaction(transactionModelDebit,transactionModelCredit, creditAccount, debitAccount);
+		transactionModelCredit.setTransaction_type("credit");
+		TransactionBO tBO= new TransactionBO();
+		boolean status= tBO.doTransaction(transactionModelDebit,transactionModelCredit, creditAccount, debitAccount);
 		RequestDispatcher view = null;
 		if(status)
 		{

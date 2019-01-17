@@ -14,7 +14,7 @@ public class GenerateTidDAO {
 	{
 		String last="";
 		Session sf=HibernateUtil.getSessionFactory();
-		List s=sf.createQuery("from TransactionModel DESC Limit 1").list();
+		List s=sf.createQuery("from TransactionModel ORDER BY transaction_ID DESC").list();
 		TransactionModel um=(TransactionModel)s.get(0);
 		last=um.getTransaction_id();
 		
