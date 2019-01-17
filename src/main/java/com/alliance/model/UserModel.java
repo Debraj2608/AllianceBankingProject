@@ -12,7 +12,8 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table (name = "cust_master")
+@Table (name = "cust_master",uniqueConstraints = {@UniqueConstraint(columnNames = {"email"})})
+
 public class UserModel implements Serializable
 {
 	/**

@@ -8,9 +8,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "fund_transfer_request_master")
+@Table(name = "fund_transfer_request_master", uniqueConstraints = {@UniqueConstraint(columnNames = {"UserModel_customerID"})})
 public class FundTransferRequestModel 
 {
 	@Id
