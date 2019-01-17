@@ -16,9 +16,16 @@ public class FundTransferRequestDAO
 		try
 		{
 			tx = session.beginTransaction();
-			session.save(fTrRequestModel);
-			tx.commit();
-			status = true;
+			if(fTrRequestModel.getUserModel().getAccountModel().getAccount_no()!=null)
+			{
+				session.save(fTrRequestModel);
+				tx.commit();
+				status = true;
+			}
+			else
+			{
+				status = false;
+			}
 		}
 		catch(Exception e)
 		{

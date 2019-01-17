@@ -48,37 +48,37 @@ public class TransactionController extends HttpServlet {
 		HttpSession session=request.getSession();
 		UserModel user = (UserModel) session.getAttribute("userRecord");
 		GetAccountDAO getAccountDAO= new GetAccountDAO();
-		String custID = user.getCustomerID();
-		String debitAccount=getAccountDAO.getAccountNumber(custID);
+		String debitAccount = user.getAccountModel().getAccount_no();  
+		//String debitAccount=getAccountDAO.getAccountNumber(custID);
 		
 		String creditAccount=request.getParameter("account_number");
-		AccountModel account1=new AccountModel();
-		account1.setAccount_no(creditAccount);
+		AccountModel accountCredit=new AccountModel();
+		accountCredit.setAccount_no(creditAccount);
 		double t_amount=Double.parseDouble(request.getParameter("t_amount"));
-		TransactionModel transactionModel= new TransactionModel();
-		TransactionModel transactionModel1= new TransactionModel();
+		TransactionModel transactionModelDebit= new TransactionModel();
+		TransactionModel transactionModelCredit= new TransactionModel();
 		AutogenTransaction autoGenTransaction=new AutogenTransaction();
 		
 		List<String> as=autoGenTransaction.getTransactionID();
-		AccountModel accountModel = new AccountModel();
-		//for from-------------------------------------------------------
+		AccountModel accountDebit = new AccountModel();
+		//for from-----------------------------------------------------------
 		//transactionModel.setAccountModel(acc_no);
-		Date d= new Date();
-		transactionModel.setTransaction_id(as.get(0));
-		transactionModel.setTransaction_date(d);
-		transactionModel.setTransaction_amount(t_amount);
-		transactionModel.setTransaction_type("Withdrawal");
-		//-----------------------------------------------------------------
+ 
+		transactionModelDebit.setTransaction_id(as.get(0));
+		transactionModelDebit.setTransaction_date(new Date());
+		transactionModelDebit.setTransaction_amount(t_amount);
+		transactionModelDebit.setTransaction_type("Withdrawal");
+		//-------------------------------------------------------------------
 		
-		//for to----------------------------------------------------------
+		//for to-------------------------------------------------------------
 		//transactionModel1.setAccountModel(account1);
-		Date d1= new Date();
-		transactionModel1.setTransaction_id(as.get(1));
-		transactionModel1.setTransaction_date(d1);
-		transactionModel1.setTransaction_amount(t_amount);
-		transactionModel1.setTransaction_type("Deposit");
+		
+		transactionModelCredit.setTransaction_id(as.get(1));
+		transactionModelCredit.setTransaction_date(new Date());
+		transactionModelCredit.setTransaction_amount(t_amount);
+		transactionModelCredit.setTransaction_type("Deposit");
 		TransactionBO tb= new TransactionBO();
-		boolean status= tb.doTransaction(transactionModel,transactionModel1, creditAccount);
+		boolean status= tb.doTransaction(transactionModelDebit,transactionModelCredit, creditAccount, debitAccount);
 		RequestDispatcher view = null;
 		if(status)
 		{
@@ -88,5 +88,6 @@ public class TransactionController extends HttpServlet {
 		{
 			view = request.getRequestDispatcher("views/error.jsp");
 		}
+		view.forward(request, response);
 	}
 }

@@ -155,6 +155,13 @@
   	<servlet-name>AdminLinkTransferFundsController</servlet-name>
   	<servlet-class>com.alliance.controller.AdminLinkTransferFundsController</servlet-class>
   </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>LogoutController</display-name>
+  	<servlet-name>LogoutController</servlet-name>
+  	<servlet-class>com.alliance.controller.LogoutController</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>Register1Controller</servlet-name>
   	<url-pattern>/Register1Controller</url-pattern>
@@ -223,5 +230,9 @@
     <servlet-mapping>
     	<servlet-name>AdminLinkTransferFundsController</servlet-name>
     	<url-pattern>/AdminLinkTransferFundsController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>LogoutController</servlet-name>
+    	<url-pattern>/LogoutController</url-pattern>
     </servlet-mapping>
 </web-app>

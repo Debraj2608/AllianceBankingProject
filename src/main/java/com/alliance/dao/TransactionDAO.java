@@ -1,5 +1,8 @@
 package com.alliance.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -9,18 +12,28 @@ import com.alliance.util.HibernateUtil;
 
 public class TransactionDAO 
 {
-	public Boolean doTransaction(TransactionModel tm,TransactionModel tm1, AccountModel am_to, AccountModel am_from)
+	public Boolean doTransaction(TransactionModel debit,TransactionModel credit, AccountModel creditAccount, AccountModel debitAccount)
 	{
 		Boolean status=false;
 		Session s= HibernateUtil.getSessionFactory();
 		Transaction tx= s.beginTransaction();
-		
 		try 
 		{
-			s.save(tm);
-			s.save(tm);
-			s.saveOrUpdate(am_to);
-			s.saveOrUpdate(am_from);
+			//s.save(tm);
+			//s.save(tm);
+			
+			List<TransactionModel> debitList = new ArrayList<TransactionModel>();
+			debitList.add(debit);
+			debitAccount.setTransactionList(debitList);
+			s.persist(debit);
+			s.saveOrUpdate(debitAccount);
+			
+			List<TransactionModel> creditList = new ArrayList<TransactionModel>();
+			creditList.add(credit);
+			creditAccount.setTransactionList(creditList);
+			s.persist(credit);
+			s.saveOrUpdate(creditAccount);
+			
 			tx.commit();
 			status=true;
 		}
