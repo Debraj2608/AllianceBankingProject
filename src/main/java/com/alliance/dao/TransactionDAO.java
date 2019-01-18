@@ -12,7 +12,7 @@ import com.alliance.util.HibernateUtil;
 
 public class TransactionDAO 
 {
-	public Boolean doTransaction(TransactionModel debit,TransactionModel credit, AccountModel creditAccount, AccountModel debitAccount)
+	public Boolean doTransaction(TransactionModel debit,TransactionModel credit, AccountModel debitAccount, AccountModel creditAccount)
 	{
 		Boolean status=false;
 		Session s= HibernateUtil.getSessionFactory();

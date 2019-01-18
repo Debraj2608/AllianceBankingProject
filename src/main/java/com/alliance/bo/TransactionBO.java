@@ -12,29 +12,28 @@ public class TransactionBO {
 	public Boolean doTransaction(TransactionModel debit,TransactionModel credit, String creditAccount, String debitAccount)
 	{
 		Boolean status=false;
-		TransactionDAO td= new TransactionDAO();
+		TransactionDAO trandsactionDAO= new TransactionDAO();
 		
-		//AccountModel acc_no_from1=debit.get
 		String acc_no_from = debitAccount;
 		double t_amount=debit.getTransaction_amount();
 		
-		GetAccountDAO gad= new GetAccountDAO();
+		GetAccountDAO getAccountDAO = new GetAccountDAO();
 		//for from------------------------------------------------------------
-		AccountModel debitAccountInfo=gad.getAccountObject(acc_no_from);
+		AccountModel debitAccountInfo = getAccountDAO.getAccountObject(acc_no_from);
 		//double old_balance=(debitAccountInfo.getBalance());
-		double old_balance=(debitAccountInfo.getBalance());
-		double new_balance=old_balance-t_amount;
+		double old_balance = (debitAccountInfo.getBalance());
+		double new_balance = old_balance-t_amount;
 		//debitAccountInfo.setBalance((new_balance));
 		debitAccountInfo.setBalance(new_balance);
 		//-------------------------------------------------------------
 		
 		//for to----------------------------------------------------------
-		AccountModel creditAccountInfo=gad.getAccountObject(creditAccount);
-		double old_balance1=(creditAccountInfo.getBalance());
-		double new_balance1=old_balance1+t_amount;
+		AccountModel creditAccountInfo = getAccountDAO.getAccountObject(creditAccount);
+		double old_balance1 = (creditAccountInfo.getBalance());
+		double new_balance1 = old_balance1+t_amount;
 		creditAccountInfo.setBalance((new_balance1));
 		//----------------------------------------------------------
-		status=td.doTransaction(debit,credit, debitAccountInfo, creditAccountInfo);
+		status=trandsactionDAO.doTransaction(debit,credit, debitAccountInfo, creditAccountInfo);
 		return status;
 	}
 

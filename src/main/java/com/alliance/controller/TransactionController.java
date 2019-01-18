@@ -45,24 +45,26 @@ public class TransactionController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		HttpSession session=request.getSession();
+		HttpSession session = request.getSession(false);
 		UserModel user = (UserModel) session.getAttribute("userRecord");
-		GetAccountDAO getAccountDAO= new GetAccountDAO();
+		GetAccountDAO getAccountDAO = new GetAccountDAO();
 		String debitAccount = user.getAccountModel().getAccount_no();  
 		//String debitAccount=getAccountDAO.getAccountNumber(user.getCustomerID());
 		System.out.println(debitAccount);
-		String creditAccount=request.getParameter("account_number");
-		AccountModel accountCredit=new AccountModel();
+		String creditAccount = request.getParameter("account_number");
+		AccountModel accountCredit = new AccountModel();
 		accountCredit.setAccount_no(creditAccount);
-		double t_amount=Double.parseDouble(request.getParameter("t_amount"));
-		TransactionModel transactionModelDebit= new TransactionModel();
-		TransactionModel transactionModelCredit= new TransactionModel();
-		AutogenTransaction autoGenTransaction=new AutogenTransaction();
+		
+		double t_amount = Double.parseDouble(request.getParameter("t_amount"));
+		TransactionModel transactionModelDebit = new TransactionModel();
+		TransactionModel transactionModelCredit = new TransactionModel();
+		AutogenTransaction autoGenTransaction = new AutogenTransaction();
 		
 		List<String> as=autoGenTransaction.getTransactionID();
-		AccountModel accountDebit = new AccountModel();
+		
 		//for from-----------------------------------------------------------
 		//transactionModel.setAccountModel(acc_no);
+		AccountModel accountDebit = new AccountModel();
 		accountDebit.setAccount_no(debitAccount);
 		transactionModelDebit.setTransaction_id(as.get(0));
 		transactionModelDebit.setTransaction_date(new Date());
@@ -77,8 +79,8 @@ public class TransactionController extends HttpServlet {
 		transactionModelCredit.setTransaction_date(new Date());
 		transactionModelCredit.setTransaction_amount(t_amount);
 		transactionModelCredit.setTransaction_type("credit");
-		TransactionBO tBO= new TransactionBO();
-		boolean status= tBO.doTransaction(transactionModelDebit,transactionModelCredit, creditAccount, debitAccount);
+		TransactionBO tBO = new TransactionBO();
+		boolean status = tBO.doTransaction(transactionModelDebit,transactionModelCredit, creditAccount, debitAccount);
 		RequestDispatcher view = null;
 		if(status)
 		{

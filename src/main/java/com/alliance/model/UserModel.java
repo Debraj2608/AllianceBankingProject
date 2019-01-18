@@ -125,18 +125,22 @@ public class UserModel implements Serializable
 		this.password = password;
 	}
 	
-	public boolean isFundsTransferStatus() {
+	public boolean isFundsTransferStatus() 
+	{
 		return fundsTransferStatus;
 	}
-	public void setFundsTransferStatus(boolean fundsTransferStatus) {
+	public void setFundsTransferStatus(boolean fundsTransferStatus) 
+	{
 		this.fundsTransferStatus = fundsTransferStatus;
 	}
 
 	@OneToOne(cascade = CascadeType.ALL)
-	public AccountModel getAccountModel() {
+	public AccountModel getAccountModel() 
+	{
 		return accountModel;
 	}
-	public void setAccountModel(AccountModel accountModel) {
+	public void setAccountModel(AccountModel accountModel) 
+	{
 		this.accountModel = accountModel;
 	}	
 	
