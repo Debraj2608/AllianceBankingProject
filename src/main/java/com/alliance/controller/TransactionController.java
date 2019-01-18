@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.alliance.bo.CheckAccountValidityBO;
+import com.alliance.bo.CheckDebitAccountBalanceBO;
 import com.alliance.bo.TransactionBO;
 import com.alliance.dao.GetAccountDAO;
 import com.alliance.model.AccountModel;
@@ -45,9 +47,10 @@ public class TransactionController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+		RequestDispatcher view = null;
 		HttpSession session = request.getSession(false);
 		UserModel user = (UserModel) session.getAttribute("userRecord");
-		GetAccountDAO getAccountDAO = new GetAccountDAO();
+
 		String debitAccount = user.getAccountModel().getAccount_no();  
 		//String debitAccount=getAccountDAO.getAccountNumber(user.getCustomerID());
 		System.out.println(debitAccount);
@@ -60,31 +63,49 @@ public class TransactionController extends HttpServlet {
 		TransactionModel transactionModelCredit = new TransactionModel();
 		AutogenTransaction autoGenTransaction = new AutogenTransaction();
 		
-		List<String> as=autoGenTransaction.getTransactionID();
+		//Validation for credit account number
+		CheckAccountValidityBO checkValidityBO = new CheckAccountValidityBO();
+		boolean creditAccountValidated = checkValidityBO.checkValidity(creditAccount);
+		System.out.println(creditAccountValidated);
 		
-		//for from-----------------------------------------------------------
-		//transactionModel.setAccountModel(acc_no);
-		AccountModel accountDebit = new AccountModel();
-		accountDebit.setAccount_no(debitAccount);
-		transactionModelDebit.setTransaction_id(as.get(0));
-		transactionModelDebit.setTransaction_date(new Date());
-		transactionModelDebit.setTransaction_amount(t_amount);
-		transactionModelDebit.setTransaction_type("debit");
-		//-------------------------------------------------------------------
+		//Validation for account balance before making transaction
+		CheckDebitAccountBalanceBO checkBalanceBO = new CheckDebitAccountBalanceBO();
+		String accountNumber = user.getAccountModel().getAccount_no();
+		boolean checkDebitAccountBalance = checkBalanceBO.checkDebitAccountBalance(accountNumber, t_amount);
+		System.out.println(checkDebitAccountBalance);
 		
-		//for to-------------------------------------------------------------
-		//transactionModel1.setAccountModel(account1);
-		
-		transactionModelCredit.setTransaction_id(as.get(1));
-		transactionModelCredit.setTransaction_date(new Date());
-		transactionModelCredit.setTransaction_amount(t_amount);
-		transactionModelCredit.setTransaction_type("credit");
-		TransactionBO tBO = new TransactionBO();
-		boolean status = tBO.doTransaction(transactionModelDebit,transactionModelCredit, creditAccount, debitAccount);
-		RequestDispatcher view = null;
-		if(status)
+		if(creditAccountValidated == true && checkDebitAccountBalance == true)
 		{
-			view = request.getRequestDispatcher("views/success.jsp");
+			List<String> as=autoGenTransaction.getTransactionID();
+		
+			//for from-----------------------------------------------------------
+			//transactionModel.setAccountModel(acc_no);
+			AccountModel accountDebit = new AccountModel();
+			accountDebit.setAccount_no(debitAccount);
+			transactionModelDebit.setTransaction_id(as.get(0));
+			transactionModelDebit.setTransaction_date(new Date());
+			transactionModelDebit.setTransaction_amount(t_amount);
+			transactionModelDebit.setTransaction_type("debit");
+			//-------------------------------------------------------------------
+			
+			//for to-------------------------------------------------------------
+			//transactionModel1.setAccountModel(account1);
+		
+			transactionModelCredit.setTransaction_id(as.get(1));
+			transactionModelCredit.setTransaction_date(new Date());
+			transactionModelCredit.setTransaction_amount(t_amount);
+			transactionModelCredit.setTransaction_type("credit");
+			TransactionBO tBO = new TransactionBO();
+			boolean status = tBO.doTransaction(transactionModelDebit,transactionModelCredit, creditAccount, debitAccount);
+			
+			if(status)
+			{
+				view = request.getRequestDispatcher("views/success.jsp");
+			}
+			else
+			{
+				view = request.getRequestDispatcher("views/error.jsp");
+			}
 		}
 		else
 		{

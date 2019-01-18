@@ -10,8 +10,11 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 @Entity
 @Table(name = "fund_transfer_request_master", uniqueConstraints = {@UniqueConstraint(columnNames = {"UserModel_customerID"})})
+@DynamicUpdate
 public class FundTransferRequestModel 
 {
 	@Id

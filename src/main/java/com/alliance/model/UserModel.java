@@ -11,9 +11,11 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 @Entity
 @Table (name = "cust_master",uniqueConstraints = {@UniqueConstraint(columnNames = {"email"})})
-
+@DynamicUpdate
 public class UserModel implements Serializable
 {
 	/**

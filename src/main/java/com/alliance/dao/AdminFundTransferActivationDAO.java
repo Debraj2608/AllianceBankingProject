@@ -31,6 +31,7 @@ public class AdminFundTransferActivationDAO
 					returnList.add(l);
 				}
 			}
+			tx.commit();
 		}
 		catch(Exception e)
 		{

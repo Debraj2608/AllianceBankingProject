@@ -10,8 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 @Entity
 @Table (name = "transaction_master")
+@DynamicUpdate
 public class TransactionModel implements Serializable {
 	
 	@Id

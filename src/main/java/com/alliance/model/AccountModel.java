@@ -13,8 +13,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 @Entity
 @Table (name = "account_master")
+
 public class AccountModel implements Serializable {
 		
 		private String account_no;
@@ -49,7 +52,7 @@ public class AccountModel implements Serializable {
 			this.balance = balance;
 		}
 		
-		@OneToMany(cascade = CascadeType.ALL)
+		@OneToMany
 		@JoinColumn(name = "AccountNumber")
 		public List<TransactionModel> getTransactionList() 
 		{
