@@ -75,6 +75,8 @@
 								<li><a href="TransferPageRefirectController"><span
 										class="glyphicon glyphicon-pencil"></span> Transfer Funds </a></li>
 										<% }%>
+								<li><a href="DeleteAccountController"><span
+										class="glyphicon glyphicon-pencil"></span> Delete Account </a></li>
 							</ul>
 						</div>
 						<!-- /.navbar-collapse -->

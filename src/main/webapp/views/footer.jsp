@@ -9,7 +9,7 @@
 </head>
 <body>
 <body style="background-color: lightblue;">
-	<footer>
+	<!-- <footer>
 		<p>
 			<marquee>
 				Our Online banking portal provides efficient banking services that
@@ -18,6 +18,12 @@
 				banking demands</a>
 			</marquee>
 		</p>
-	</footer>
+	</footer>-->
+	<footer class="py-5 bg-dark">
+      <div class="container">
+    <marquee><p class="m-0 text-center text-white">Copyright &copy; Alliance Banking 2019</p></marquee>    
+      </div>
+      <!-- /.container -->
+    </footer>
 </body>
 </html>

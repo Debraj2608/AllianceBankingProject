@@ -24,7 +24,8 @@ import com.alliance.util.AutogenTransaction;
 /**
  * Servlet implementation class TransactionController
  */
-public class TransactionController extends HttpServlet {
+public class TransactionController extends HttpServlet 
+{
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -63,22 +64,22 @@ public class TransactionController extends HttpServlet {
 		TransactionModel transactionModelCredit = new TransactionModel();
 		AutogenTransaction autoGenTransaction = new AutogenTransaction();
 		
-		//Validation for credit account number
+		//Validation for credit account number----------------------------------------------
 		CheckAccountValidityBO checkValidityBO = new CheckAccountValidityBO();
 		boolean creditAccountValidated = checkValidityBO.checkValidity(creditAccount);
 		System.out.println(creditAccountValidated);
-		
-		//Validation for account balance before making transaction
+		//----------------------------------------------------------------------------------
+		//Validation for account balance before making transaction--------------------------
 		CheckDebitAccountBalanceBO checkBalanceBO = new CheckDebitAccountBalanceBO();
 		String accountNumber = user.getAccountModel().getAccount_no();
 		boolean checkDebitAccountBalance = checkBalanceBO.checkDebitAccountBalance(accountNumber, t_amount);
-		System.out.println(checkDebitAccountBalance);
-		
+		//System.out.println(checkDebitAccountBalance);
+		//----------------------------------------------------------------------------------
 		if(creditAccountValidated == true && checkDebitAccountBalance == true)
 		{
 			List<String> as=autoGenTransaction.getTransactionID();
 		
-			//for from-----------------------------------------------------------
+			//Debit Account	------------------------------------------------------------------
 			//transactionModel.setAccountModel(acc_no);
 			AccountModel accountDebit = new AccountModel();
 			accountDebit.setAccount_no(debitAccount);
@@ -86,18 +87,18 @@ public class TransactionController extends HttpServlet {
 			transactionModelDebit.setTransaction_date(new Date());
 			transactionModelDebit.setTransaction_amount(t_amount);
 			transactionModelDebit.setTransaction_type("debit");
-			//-------------------------------------------------------------------
+			//---------------------------------------------------------------------------------
 			
-			//for to-------------------------------------------------------------
+			//Credit Account-------------------------------------------------------------------
 			//transactionModel1.setAccountModel(account1);
 		
 			transactionModelCredit.setTransaction_id(as.get(1));
 			transactionModelCredit.setTransaction_date(new Date());
 			transactionModelCredit.setTransaction_amount(t_amount);
 			transactionModelCredit.setTransaction_type("credit");
-			TransactionBO tBO = new TransactionBO();
-			boolean status = tBO.doTransaction(transactionModelDebit,transactionModelCredit, creditAccount, debitAccount);
-			
+			//----------------------------------------------------------------------------------
+			TransactionBO transactionBO = new TransactionBO();
+			boolean status = transactionBO.doTransaction(transactionModelDebit,transactionModelCredit, creditAccount, debitAccount);	
 			if(status)
 			{
 				view = request.getRequestDispatcher("views/success.jsp");

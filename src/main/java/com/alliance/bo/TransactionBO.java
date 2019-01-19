@@ -22,22 +22,16 @@ public class TransactionBO {
 		GetAccountDAO getAccountDAO = new GetAccountDAO();
 		//Debit Account 
 		AccountModel debitAccountInfo = getAccountDAO.getAccountObject(debitAccount);
-		//double old_balance=(debitAccountInfo.getBalance());
 		double old_balance = (debitAccountInfo.getBalance());
-		System.out.println("debit "+old_balance);
 		double new_balance = old_balance-t_amount;
-		//System.out.println("debit "+new_balance);
-		//debitAccountInfo.setBalance((new_balance));
-		//debitAccountInfo.setBalance(new_balance);
-		//------------------------------------------------------------------------------------------------
+		
+		//-------------------------------------------------------------------------------------------------
 		
 		//Credit Account
 		AccountModel creditAccountInfo = getAccountDAO.getAccountObject(creditAccount);
 		double old_balance1 = (creditAccountInfo.getBalance());
-		//System.out.println("credit "+old_balance1);
 		double new_balance1 = old_balance1+t_amount;
-		//System.out.println("credit "+new_balance1);
-		//creditAccountInfo.setBalance((new_balance1));
+		
 		//-------------------------------------------------------------------------------------------------
 		statusTransaction = transactionDAO.doTransaction(debit,credit, debitAccount, creditAccount);
 		statusDebitBalanceUpdate = transactionDAO.updateDebitAccountBalance(debitAccount, new_balance);

@@ -52,7 +52,7 @@ public class AccountModel implements Serializable {
 			this.balance = balance;
 		}
 		
-		@OneToMany
+		@OneToMany(cascade = CascadeType.ALL)
 		@JoinColumn(name = "AccountNumber")
 		public List<TransactionModel> getTransactionList() 
 		{

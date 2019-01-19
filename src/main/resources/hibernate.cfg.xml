@@ -17,5 +17,6 @@
  	 	 	<mapping class="com.alliance.model.AccountModel"/>   
             <mapping class="com.alliance.model.TransactionModel"/>
             <mapping class="com.alliance.model.FundTransferRequestModel"/>  
+            <mapping class="com.alliance.model.DeletedAccountsInfoModel"/>
      </session-factory>
  </hibernate-configuration>

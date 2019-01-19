@@ -1,6 +1,8 @@
 package com.alliance.model;
 
 import java.util.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,7 +29,7 @@ public class FundTransferRequestModel
 	@Column
 	private Date activationTime;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private UserModel userModel;
 	
 	@Column 

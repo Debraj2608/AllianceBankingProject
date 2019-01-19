@@ -51,7 +51,7 @@ public class TransactionDAO
 		return status;
 	}
 	
-	public boolean updateDebitAccountBalance(String debitAccount, double newBalance)
+	public boolean updateDebitAccountBalance(String debitAccount, double newDebitBalance)
 	{
 		Session s= HibernateUtil.getSessionFactory();
 		boolean status = false;
@@ -62,7 +62,7 @@ public class TransactionDAO
 			//System.out.println(newBalance);
 			AccountModel debitAccountObj = s.get(AccountModel.class, debitAccount);
 			//System.out.println(debitAccount+"debit");
-			debitAccountObj.setBalance(newBalance);
+			debitAccountObj.setBalance(newDebitBalance);
 			//System.out.println(debitAccountObj.getBalance());
 			s.saveOrUpdate(debitAccountObj);
 			
@@ -82,7 +82,7 @@ public class TransactionDAO
 		return status;
 	}
 
-	public boolean updateCreditAccountBalance(String creditAccount, double newBalance1)
+	public boolean updateCreditAccountBalance(String creditAccount, double newCreditBalance)
 	{
 		Session s= HibernateUtil.getSessionFactory();
 		boolean status = false;
@@ -93,7 +93,7 @@ public class TransactionDAO
 			//System.out.println(creditAccount+"credit");
 			AccountModel creditAccountObj = s.get(AccountModel.class, creditAccount);
 			//System.out.println(newBalance1);
-			creditAccountObj.setBalance(newBalance1);
+			creditAccountObj.setBalance(newCreditBalance);
 			//System.out.println(creditAccountObj.getBalance());
 			s.saveOrUpdate(creditAccountObj);
 			
