@@ -1,28 +1,22 @@
-<%@ page import="com.alliance.model.UserModel" language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page import="com.alliance.model.UserModel" language="java"
+	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Profile</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script>
-<%
-UserModel currentUser = (UserModel) session.getAttribute("userRecord");
-%>
-</script>
 
-<script>
-function balance() {
-	document.getElementById("p1").innerHTML = "<h3>"+"Your current balance is "+"</h3>"+"<h3>"+
-	 <%=currentUser.getAccountModel().getBalance()%>+"</h3>";
-}
-</script>
+<%
+	UserModel currentUser = (UserModel) session.getAttribute("userRecord");
+%>
+
 </head>
 <body>
 	<%@include file="profileheader.jsp"%>
@@ -75,47 +69,117 @@ function balance() {
 										class="glyphicon glyphicon-dashboard"></span> Dashboard </a></li>
 								<li><a href="UpdatePageRedirectController"><span
 										class="glyphicon glyphicon-pencil"></span> Update Profile </a></li>
-							<%  
+								<li><a href="MyAccountController"><span
+										class="glyphicon glyphicon-pencil"></span> My Account </a></li>	
+								<%
 									boolean status = currentUser.isFundsTransferStatus();
-									if(status==false)
-									{%>
+									if (status == false) {
+								%>
 								<li><a href="FundTransferRequestController"><span
-										class="glyphicon glyphicon-pencil"></span> Request for transfer services </a></li>
-										<%} 
-										else
-										{%>			
+										class="glyphicon glyphicon-pencil"></span> Request for
+										transfer services </a></li>
+								<%
+									} else {
+								%>
 								<li><a href="TransferPageRefirectController"><span
 										class="glyphicon glyphicon-pencil"></span> Transfer Funds </a></li>
-										<% }%>
-								<li><a href="MyAccountController"><span
-										class="glyphicon glyphicon-pencil"></span> My Account </a></li>		
-								<li><a href="DeleteAccountController"><span
-										class="glyphicon glyphicon-pencil"></span> Delete Account </a></li>
+								<%
+									}
+								%>
 							</ul>
 						</div>
-						<!-- /.navbar-collapse -->
 					</nav>
 				</div>
 			</div>
 		</div>
 		<div class="col-md-10 content">
 			<div class="panel panel-default">
-				<div class="panel-heading">Welcome <%=currentUser.getFirstName() %></div>
+				<div class="panel-heading">Dashboard</div>
 				<div class="panel-body">
-				<button style="align:center" onclick="balance()">Check Balance</button>
-					<p id="p1" style="color: green; text-align : center;"></p>
-					<pre>
-			Alliance Bank welcomes you to explore the world of premier banking in India.
-			In this section, you can access detailed information about your account,
-			Our Bank is actively involved to provide you efficient banking services.
-			Our commitment to nation-building is complete & comprehensive.
-				</pre>
+	<div class="form-group">
+	<div class="control-label col-sm-6">
+
+				<h4>Customer ID:</h4></div>
+
+				<div class="col-sm-4">
+
+					<h4><%=currentUser.getCustomerID() %></h4>
+				</div>		
+	
+	<div class="control-label col-sm-6">
+
+				<h4>Account Number:</h4></div>
+
+				<div class="col-sm-4">
+
+					<h4><%=currentUser.getAccountModel().getAccount_no() %></h4>
+				</div>
+			
+	<div class="control-label col-sm-6">
+		<h4>Name:</h4></div>
+		<div class="col-sm-4">
+			<%if(currentUser.getMiddleName().equals(null)) 
+			{%>
+			<h4><%=currentUser.getFirstName()+" "+currentUser.getLastName() %></h4>
+			<%} else { %>
+			<h4><%=currentUser.getFirstName()+" "+currentUser.getMiddleName()+" "+currentUser.getLastName() %></h4>
+			<%} %>
+		</div>
+	<div class="control-label col-sm-6">
+
+				<h4>City:</h4></div>
+
+				<div class="col-sm-4">
+
+					<h4><%=currentUser.getCity() %></h4>
+				</div>		
+	
+	
+	<div class="control-label col-sm-6">
+
+				<h4>Date of Birth:</h4></div>
+
+				<div class="col-sm-4">
+
+					<h4><%=currentUser.getDob() %></h4>
+				</div>
+				
+	<div class="control-label col-sm-6">
+
+				<h4>Contact Number:</h4></div>
+
+				<div class="col-sm-4">
+
+					<h4><%=currentUser.getContactNumber() %></h4>
+				</div>			
+				
+	<div class="control-label col-sm-6">
+
+				<h4>Email:</h4></div>
+
+				<div class="col-sm-4">
+
+					<h4><%=currentUser.getEmail() %></h4>
+				</div>
+				
+	<div class="control-label col-sm-6">
+
+				<h4>Occupation:</h4></div>
+
+				<div class="col-sm-4">
+
+					<h4><%=currentUser.getOccupation() %></h4>
+				</div>			
+			</div>
+			
+	<br>												
+		<li><a href="MiniStatementController"><span
+			class="glyphicon glyphicon-pencil"></span> Check mini statement </a></li>
+			
 				</div>
 			</div>
 		</div>
 	</div>
 	<%@include file="footer.jsp"%>
-
-
 </body>
 </html>

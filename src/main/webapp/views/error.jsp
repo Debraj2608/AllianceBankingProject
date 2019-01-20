@@ -7,7 +7,7 @@
 <title>error 404</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link href="css/error.css" rel="stylesheet">
+<link href="../css/error.css" rel="stylesheet">
 
 
 <script
@@ -19,7 +19,7 @@
   <h1>Error <span class="errorcode">404</span></h1>
   <p class="output">Insufficient Balance!!</ü>
   <p class="output">Please try <a href="index.jsp">Back to Home</a> </p>
-  
+  <h1 style = "text-align:center">An error has occured</h1>
 </div>
 
 </body>

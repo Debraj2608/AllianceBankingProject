@@ -162,6 +162,27 @@
   	<servlet-name>LogoutController</servlet-name>
   	<servlet-class>com.alliance.controller.LogoutController</servlet-class>
   </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>MyAccountController</display-name>
+  	<servlet-name>MyAccountController</servlet-name>
+  	<servlet-class>com.alliance.controller.MyAccountController</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>MiniStatementController</display-name>
+  	<servlet-name>MiniStatementController</servlet-name>
+  	<servlet-class>com.alliance.controller.MiniStatementController</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>GetTransactionListBO</display-name>
+  	<servlet-name>GetTransactionListBO</servlet-name>
+  	<servlet-class>com.alliance.bo.GetTransactionListBO</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>Register1Controller</servlet-name>
   	<url-pattern>/Register1Controller</url-pattern>
@@ -234,5 +255,17 @@
     <servlet-mapping>
     	<servlet-name>LogoutController</servlet-name>
     	<url-pattern>/LogoutController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>MyAccountController</servlet-name>
+    	<url-pattern>/MyAccountController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>MiniStatementController</servlet-name>
+    	<url-pattern>/MiniStatementController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>GetTransactionListBO</servlet-name>
+    	<url-pattern>/GetTransactionListBO</url-pattern>
     </servlet-mapping>
 </web-app>

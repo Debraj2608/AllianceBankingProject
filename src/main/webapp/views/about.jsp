@@ -46,11 +46,17 @@
         </div>
         <div class="col-lg-6">
           <h2>About Modern Business</h2>
-       Alliance Bank is India's largest private sector bank with total consolidated assets of Rs. 11,242.81 billion (US$ 172.5 billion) at March 31, 2018 and profit after tax of Rs. 67.77 billion (US$ 1.0 billion) for the year ended March 31, 2018. Alliance Bank currently has a network of 4,867 Branches and 14,367 ATMs across India.
-
+       Alliance Bank is India's largest private sector bank with total consolidated assets of Rs. 11,242.81 billion 
+       (US$ 172.5 billion) at March 31, 2018 and profit after tax of Rs. 67.77 billion (US$ 1.0 billion) 
+       for the year ended March 31, 2018. Alliance Bank currently has a network of 4,867 Branches and 14,367 ATMs across India.
+       <br>
+       Alliance Bank is a banking group offering end-to-end banking and financial solutions through its consumer banking, 
+       business banking, investment banking and stock broking businesses as well as unit trust and asset management, 
+       having served the financial community over the past five decades.
+		
  
 <h2>History</h2>
-Alliance Bank was originally promoted in 1994 by Alliance Limited, an Indian financial institution, and was its wholly-owned subsidiary.
+Alliance Bank was originally promoted in 1968 by Alliance Limited, an Indian financial institution, and was its wholly-owned subsidiary.
 
 <h2>Alliance Bank Group Companies</h2>
 Alliance Bank offers a wide range of banking products and financial services to corporate and retail customers through a variety of delivery channels and through its group companies.
