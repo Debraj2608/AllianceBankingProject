@@ -72,7 +72,7 @@ public class Register1Controller extends HttpServlet {
 		userModel.setPassword(password);
 		userModel.setCustomerID(customerID);
 		HttpSession session = request.getSession();
-		session.setAttribute("userModel", userModel);
+		request.setAttribute("userModel", userModel);
 		boolean status = register1BO.register1validate(userModel);
 		if(status)
 		{

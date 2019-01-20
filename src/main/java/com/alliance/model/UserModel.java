@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -138,7 +139,7 @@ public class UserModel implements Serializable
 		this.fundsTransferStatus = fundsTransferStatus;
 	}
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	public AccountModel getAccountModel() 
 	{
 		return accountModel;

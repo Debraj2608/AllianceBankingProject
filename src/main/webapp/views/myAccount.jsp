@@ -94,7 +94,7 @@
 		</div>
 		<div class="col-md-10 content">
 			<div class="panel panel-default">
-				<div class="panel-heading">Dashboard</div>
+				<div class="panel-heading">Your Account</div>
 				<div class="panel-body">
 	<div class="form-group">
 	<div class="control-label col-sm-6">
@@ -172,14 +172,17 @@
 				</div>			
 			</div>
 			
-	<br>												
-		<li><a href="MiniStatementController"><span
-			class="glyphicon glyphicon-pencil"></span> Check mini statement </a></li>
+	
 			
 				</div>
+				<br>
+			<li><a href="MiniStatementController"><span
+			class="glyphicon glyphicon-pencil"></span> Check mini statement </a></li>
 			</div>
+			
 		</div>
 	</div>
+	
 	<%@include file="footer.jsp"%>
 </body>
 </html>

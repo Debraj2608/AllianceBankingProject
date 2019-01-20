@@ -14,26 +14,47 @@ public class GetTransactionListBO
 	public List<TransactionModel> transactionList(UserModel user)
 	{
 		List<TransactionModel> list = getTransactionList.transactionList(user);
+		/*for(TransactionModel m : list)
+		{
+			System.out.println(m.getTransaction_id()+" "+m.getTransaction_amount());
+		}*/
 		Collections.reverse(list);
+		/*for(TransactionModel m : list)
+		{
+			System.out.println(m.getTransaction_id()+" "+m.getTransaction_amount());
+		}*/
 		int size = list.size();
-		System.out.println(size);
+		//System.out.println(size);
 		List<TransactionModel> transactionList = new ArrayList<TransactionModel>();
 		if(size>10)
 		{
 			int i = 1;
 			for(TransactionModel tm : list)
 			{	
-				while(i<=10)
-				{
-					transactionList.add(tm);
-				}
+				System.out.println("inside while");
+				transactionList.add(tm);
 				i++;
+				if(i<=10)
+				{
+					continue;
+				}
+				else
+				{
+					break;
+				}
 			}
+				
+				
+			
 		}
 		else
 		{
 			transactionList.addAll(list);
 		}
+		/*for(TransactionModel m : transactionList)
+		{
+			System.out.println(m.getTransaction_id()+" "+m.getTransaction_amount());
+		}*/
 		return transactionList;
 	}
 }

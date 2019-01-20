@@ -5,6 +5,27 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Profile</title>
+<style type="text/css">
+table 
+{
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+td, th 
+{
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even) 
+{
+	background-color: #dddddd;
+}
+</style>
+
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
@@ -80,28 +101,40 @@
 				<%  
                  List <UserModel> as=new ArrayList<UserModel>();
 
-	             as=(List)request.getAttribute("Userdetails");
-					for(UserModel um: as)
-					{ 
+	             as=(List)request.getAttribute("Userdetails"); 
 				%>
 		
-				<%= 
-				um.getCustomerID()%>-
-				<%=um.getFirstName()%>
-				<%=um.getMiddleName()%>
-				<%=um.getLastName()%>-
-				<%=um.getDob()%>-
-				<%=um.getCity()%>-
-				<%=um.getContactNumber()%>-
-				<%=um.getOccupation()%>
-				<a href="AdminLinkController?module=<%= um.getCustomerID() %>">Link This User</a>	
-				<p>
-				<p>
+				<table>
+			<tr>
+			<th>Customer ID</th>
+			<th>Name</th>
+			<th>Date of Birth</th>
+			<th>City</th>
+			<th>Contact Number</th>
+			<th>Occupation</th>
+			<th>Action</th>
+			
+		</tr>
+		<%
+			for(UserModel list : as)
+			{
+		%>
+		<tr>
+			<td><%=list.getCustomerID() %></td>
+			<td><%=list.getFirstName()+" "+list.getMiddleName()+" "+list.getLastName() %>
+			<td><%=list.getDob() %></td>
+			<td><%=list.getCity() %></td>
+			<td><%=list.getContactNumber() %></td>
+			<td><%=list.getOccupation() %></td>
+			<td><a href="AdminLinkController?module=<%= list.getCustomerID() %>">Link This User</a></td>
+			
+		</tr>
+		<%
+			}
+		%>
+	</table>
 								
-	<% 
-	}
 	
-	%>
 				
 				
 				

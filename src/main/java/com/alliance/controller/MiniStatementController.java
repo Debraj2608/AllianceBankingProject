@@ -40,7 +40,7 @@ public class MiniStatementController extends HttpServlet {
 		RequestDispatcher view = request.getRequestDispatcher("views/miniStatement.jsp");
 		view.forward(request, response);
 	}
-
+    
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -48,5 +48,4 @@ public class MiniStatementController extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }

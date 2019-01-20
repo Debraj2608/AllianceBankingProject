@@ -5,6 +5,26 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Profile</title>
+<style type="text/css">
+table 
+{
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+td, th 
+{
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even) 
+{
+	background-color: #dddddd;
+}
+</style>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
@@ -77,16 +97,32 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">Activate Fund Transfer Requests</div>
 				<div class="panel-body">
-				<%List<FundTransferRequestModel> unApprovedList = (List)request.getAttribute("UnApprovedTransferFunds"); 
-				for(FundTransferRequestModel l: unApprovedList)
-				{ %>
-				<%= l.getUserModel().getFirstName() %>
-				<%= l.getUserModel().getMiddleName() %>
-				<%= l.getUserModel().getLastName() %>-
-				<%= l.getUserModel().getCustomerID() %>-
-				<%= l.getRequestTime() %>
-				<a href="AdminLinkTransferFundsController?module=<%= l.getUserModel().getCustomerID() %>">Activate Transfer Funds</a><br>
-				<%} %>
+				<%List<FundTransferRequestModel> unApprovedList = (List)request.getAttribute("UnApprovedTransferFunds"); %>
+					<table>
+					<tr>
+					<th>Account Number</th>
+					<th>Name</th>
+					<th>Customer ID</th>
+					<th>Request Time</th>
+					<th>Action</th>
+				</tr>
+				<%
+					for(FundTransferRequestModel fr : unApprovedList)
+					{
+				%>
+				<tr>
+					<td><%=fr.getUserModel().getAccountModel().getAccount_no() %></td>
+					<td><%=fr.getUserModel().getFirstName()+" "+fr.getUserModel().getMiddleName()+" "+fr.getUserModel().getLastName() %>
+					<td><%=fr.getUserModel().getCustomerID() %></td>
+					<td><%=fr.getRequestTime() %></td>
+					<td><a href="AdminLinkTransferFundsController?module=<%= fr.getUserModel().getCustomerID() %>">Activate Transfer Funds</a><br>
+</td>
+					
+				</tr>
+				<%
+					}
+				%>
+			</table>
 				
 				
 				
