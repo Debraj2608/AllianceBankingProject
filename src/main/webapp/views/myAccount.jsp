@@ -5,6 +5,28 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Profile</title>
+
+<style type="text/css">
+table 
+{
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+td, th 
+{
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even) 
+{
+	background-color: #dddddd;
+}
+</style>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -96,85 +118,34 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">Your Account</div>
 				<div class="panel-body">
-	<div class="form-group">
-	<div class="control-label col-sm-6">
-
-				<h4>Customer ID:</h4></div>
-
-				<div class="col-sm-4">
-
-					<h4><%=currentUser.getCustomerID() %></h4>
-				</div>		
-	
-	<div class="control-label col-sm-6">
-
-				<h4>Account Number:</h4></div>
-
-				<div class="col-sm-4">
-
-					<h4><%=currentUser.getAccountModel().getAccount_no() %></h4>
-				</div>
-			
-	<div class="control-label col-sm-6">
-		<h4>Name:</h4></div>
-		<div class="col-sm-4">
-			<%if(currentUser.getMiddleName().equals(null)) 
-			{%>
-			<h4><%=currentUser.getFirstName()+" "+currentUser.getLastName() %></h4>
-			<%} else { %>
-			<h4><%=currentUser.getFirstName()+" "+currentUser.getMiddleName()+" "+currentUser.getLastName() %></h4>
-			<%} %>
-		</div>
-	<div class="control-label col-sm-6">
-
-				<h4>City:</h4></div>
-
-				<div class="col-sm-4">
-
-					<h4><%=currentUser.getCity() %></h4>
-				</div>		
-	
-	
-	<div class="control-label col-sm-6">
-
-				<h4>Date of Birth:</h4></div>
-
-				<div class="col-sm-4">
-
-					<h4><%=currentUser.getDob() %></h4>
-				</div>
 				
-	<div class="control-label col-sm-6">
 
-				<h4>Contact Number:</h4></div>
-
-				<div class="col-sm-4">
-
-					<h4><%=currentUser.getContactNumber() %></h4>
-				</div>			
-				
-	<div class="control-label col-sm-6">
-
-				<h4>Email:</h4></div>
-
-				<div class="col-sm-4">
-
-					<h4><%=currentUser.getEmail() %></h4>
-				</div>
-				
-	<div class="control-label col-sm-6">
-
-				<h4>Occupation:</h4></div>
-
-				<div class="col-sm-4">
-
-					<h4><%=currentUser.getOccupation() %></h4>
-				</div>			
-			</div>
-			
-	
-			
-				</div>
+				<table style="width:100%">
+				<tr>
+				  <th>Customer ID</th>
+    			  <td>&nbsp;&nbsp;<%= currentUser.getCustomerID() %></td>
+  				</tr>
+				<tr>
+				  <th>Name</th>
+    			  <td>&nbsp;&nbsp;<%= currentUser.getFirstName()+" "+currentUser.getMiddleName()+" "+currentUser.getLastName() %>  </td>
+  				</tr>
+  				  <tr>
+                  <th>Email</th>
+                  <td>&nbsp;&nbsp;<%= currentUser.getEmail() %></td>
+                </tr>
+                  <tr>
+                  <th>Date of Birth</th>
+                  <td>&nbsp;&nbsp;<%= currentUser.getDob() %></td>
+                </tr>
+                <tr>
+                  <th>Contact Number</th>
+                  <td>&nbsp;&nbsp;<%= currentUser.getContactNumber() %></td>
+                </tr>
+                <tr>
+                  <th>Occupation</th>
+                  <td>&nbsp;&nbsp;<%= currentUser.getOccupation() %></td>
+                </tr>
+          </table>
 				<br>
 			<li><a href="MiniStatementController"><span
 			class="glyphicon glyphicon-pencil"></span> Check mini statement </a></li>

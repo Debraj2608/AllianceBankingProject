@@ -77,7 +77,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">Welcome Admin</div>
 				<div class="panel-body">
-				<%=request.getAttribute("msg") %>
+				Request has been approved
 				
 				
 				

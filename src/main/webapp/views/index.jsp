@@ -26,7 +26,7 @@
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner">
 			<div class="item active">
-				<img src="/OnlineBanking/images/pic1.jpg" alt="pic1"
+				<img src="../images/pic1.jpg" alt="pic1"
 					style="width: 1500px; height: 600px;" />
 
 				<div class="carousel-caption">
@@ -36,7 +36,7 @@
 			</div>
 
 			<div class="item">
-				<img src="/OnlineBanking/images/pic2.jpg" alt="pic2"
+				<img src="../images/pic2.jpg" alt="pic2"
 					style="width: 1500px; height: 600px;" />
 				<div class="carousel-caption">
 					<h1>What We Do</h1>
@@ -44,7 +44,7 @@
 			</div>
 
 			<div class="item">
-				<img src="/OnlineBanking/images/pic3.jpg" alt="pic3"
+				<img src="../images/pic3.jpg" alt="pic3"
 					style="width: 1500px; height: 600px;" />
 				<div class="carousel-caption">
 					<h1>Contact Us</h1>

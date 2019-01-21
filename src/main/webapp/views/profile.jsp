@@ -87,6 +87,8 @@ function balance() {
 								<li><a href="TransferPageRefirectController"><span
 										class="glyphicon glyphicon-pencil"></span> Transfer Funds </a></li>
 										<% }%>
+								<li><a href="DepositPageRedirectController"><span
+										class="glyphicon glyphicon-pencil"></span> Deposit </a></li>		
 								<li><a href="MyAccountController"><span
 										class="glyphicon glyphicon-pencil"></span> My Account </a></li>		
 								<li><a href="DeleteAccountController"><span

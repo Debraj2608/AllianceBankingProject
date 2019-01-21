@@ -183,6 +183,20 @@
   	<servlet-name>GetTransactionListBO</servlet-name>
   	<servlet-class>com.alliance.bo.GetTransactionListBO</servlet-class>
   </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>DepositPageRedirectController</display-name>
+  	<servlet-name>DepositPageRedirectController</servlet-name>
+  	<servlet-class>com.alliance.controller.DepositPageRedirectController</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>DepositController</display-name>
+  	<servlet-name>DepositController</servlet-name>
+  	<servlet-class>com.alliance.controller.DepositController</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>Register1Controller</servlet-name>
   	<url-pattern>/Register1Controller</url-pattern>
@@ -267,5 +281,13 @@
     <servlet-mapping>
     	<servlet-name>GetTransactionListBO</servlet-name>
     	<url-pattern>/GetTransactionListBO</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>DepositPageRedirectController</servlet-name>
+    	<url-pattern>/DepositPageRedirectController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>DepositController</servlet-name>
+    	<url-pattern>/DepositController</url-pattern>
     </servlet-mapping>
 </web-app>

@@ -8,18 +8,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.alliance.bo.AdminLinkTransferFundsBO;
-
 /**
- * Servlet implementation class AdminLinkTransferFundsController
+ * Servlet implementation class DepositPageRedirectController
  */
-public class AdminLinkTransferFundsController extends HttpServlet {
+public class DepositPageRedirectController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminLinkTransferFundsController() {
+    public DepositPageRedirectController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,18 +27,8 @@ public class AdminLinkTransferFundsController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		AdminLinkTransferFundsBO adLinkTrFundsBO = new AdminLinkTransferFundsBO();
-		String customerID = request.getParameter("module");
-		boolean status = adLinkTrFundsBO.activate(customerID);
-		RequestDispatcher view = null;
-		if(status)
-		{
-			view = request.getRequestDispatcher("views/transferRequestApproved.jsp");
-		}
-		else
-		{
-			view = request.getRequestDispatcher("views/transferRequestNotApproved.jsp");
-		}
+		RequestDispatcher view = request.getRequestDispatcher("views/deposit.jsp");
 		view.forward(request, response);
 	}
+
 }

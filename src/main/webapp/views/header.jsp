@@ -4,6 +4,70 @@
 <html>
 <head>
 <title>header</title>
+<style type="text/css">
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+	overflow: hidden;
+	background-color: black;
+	padding: 20px 10px;
+}
+
+.para {
+	float: left;
+	color: white;
+	text-align: center;
+	padding: 12px;
+	text-decoration: none;
+	font-size: 25px;
+	line-height: 25px;
+	border-radius: 4px;
+}
+
+.header a {
+	float: left;
+	color: white;
+	text-align: center;
+	padding: 12px;
+	text-decoration: none;
+	font-size: 17px;
+	line-height: 25px;
+	border-radius: 4px;
+}
+
+.header a.logo {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.header a:hover {
+	background-color: white;
+	color: black;
+}
+
+.header-left {
+	float: right;
+}
+
+@media screen and (max-width: 500px) {
+	.header a {
+		float: none;
+		display: block;
+		text-align: left;
+	}
+	.header-left {
+		float: none;
+	}
+}
+</style>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
