@@ -8,9 +8,9 @@ import com.alliance.util.HibernateUtil;
 
 public class FundTransferRequestDAO 
 {
-	public boolean requestSent(FundTransferRequestModel fTrRequestModel)
+	public int requestSent(FundTransferRequestModel fTrRequestModel)
 	{
-		boolean status = false;
+		int i = 0;
 		Session session = HibernateUtil.getSessionFactory();
 		Transaction tx = null;
 		try
@@ -20,23 +20,23 @@ public class FundTransferRequestDAO
 			{
 				session.save(fTrRequestModel);
 				tx.commit();
-				status = true;
+				i = 1;
 			}
 			else
 			{
-				status = false;
+				i = 2;
 			}
 		}
 		catch(Exception e)
 		{
 			tx.rollback();
-			status = false;
+			i = 0;
 			System.out.println(e);
 		}
 		finally
 		{
 			session.close();
 		}
-		return status;
+		return i;
 	}
 }

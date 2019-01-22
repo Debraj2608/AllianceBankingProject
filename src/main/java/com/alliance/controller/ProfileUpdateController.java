@@ -36,14 +36,20 @@ public class ProfileUpdateController extends HttpServlet {
 		um.setOccupation(occu);
 		um.setPassword(passnew);
 		um.setCustomerID(userid);
-		boolean b = false;
-		b = pubo.update(um);
-		System.out.println("ProfileUpdateController");
-		if (b) {
-			System.out.println(b);
-			rd = request.getRequestDispatcher("views/profile.jsp");
-		} else {
-			rd = request.getRequestDispatcher("views/error.jsp");
+		boolean status = false;
+		status = pubo.update(um);
+		
+		if (status) 
+		{
+			String message = "Your profile is successfully updated";
+			request.setAttribute("message", message);
+			rd = request.getRequestDispatcher("views/userSuccess.jsp");
+		} 
+		else 
+		{
+			String message = "Your profile could not be updated. Please try later.";
+			request.setAttribute("message", message);
+			rd = request.getRequestDispatcher("views/userError.jsp");
 		}
 		rd.forward(request, response);
 	}

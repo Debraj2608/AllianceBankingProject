@@ -6,9 +6,9 @@ import com.alliance.model.FundTransferRequestModel;
 public class FundTransferRequestBO 
 {
 	FundTransferRequestDAO fTrReqDAO = new FundTransferRequestDAO();
-	public boolean requestSent(FundTransferRequestModel fTrRequestModel)
+	public int requestSent(FundTransferRequestModel fTrRequestModel)
 	{
-		boolean status = fTrReqDAO.requestSent(fTrRequestModel);
-		return status;
+		int i = fTrReqDAO.requestSent(fTrRequestModel);
+		return i;
 	}
 }

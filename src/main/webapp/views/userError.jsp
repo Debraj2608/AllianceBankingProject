@@ -1,36 +1,22 @@
-<%@ page import="com.alliance.model.FundTransferRequestModel,java.util.*" language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page import="com.alliance.model.UserModel" language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Profile</title>
-<style type="text/css">
-table 
-{
-	font-family: arial, sans-serif;
-	border-collapse: collapse;
-	width: 100%;
-}
-
-td, th 
-{
-	border: 1px solid #dddddd;
-	text-align: left;
-	padding: 8px;
-}
-
-tr:nth-child(even) 
-{
-	background-color: #dddddd;
-}
-</style>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+<%
+UserModel currentUser = (UserModel) session.getAttribute("userRecord");
+%>
+</script>
+
 </head>
 <body>
 	<%@include file="profileheader.jsp"%>
@@ -80,12 +66,27 @@ tr:nth-child(even)
 						<div class="side-menu-container">
 							<ul class="nav navbar-nav">
 								<li class="active"><a href="#"><span
-										class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
-								<li><a href="AdminDispController"><span
-										class="glyphicon glyphicon-pencil"></span> Link Accounts </a></li>	
-								<li><a href="AdminFundTransferActivationController"><span
-										class="glyphicon glyphicon-pencil"></span> Transfer Funds Requests </a></li>
-
+										class="glyphicon glyphicon-dashboard"></span> Dashboard </a></li>
+								<li><a href="UpdatePageRedirectController"><span
+										class="glyphicon glyphicon-pencil"></span> Update Profile </a></li>
+							<%  
+									boolean status = currentUser.isFundsTransferStatus();
+									if(status==false)
+									{%>
+								<li><a href="FundTransferRequestController"><span
+										class="glyphicon glyphicon-pencil"></span> Request for transfer services </a></li>
+										<%} 
+										else
+										{%>			
+								<li><a href="TransferPageRefirectController"><span
+										class="glyphicon glyphicon-pencil"></span> Transfer Funds </a></li>
+										<% }%>
+								<li><a href="DepositPageRedirectController"><span
+										class="glyphicon glyphicon-pencil"></span> Deposit </a></li>		
+								<li><a href="MyAccountController"><span
+										class="glyphicon glyphicon-pencil"></span> My Account </a></li>		
+								<li><a href="DeleteAccountController"><span
+										class="glyphicon glyphicon-pencil"></span> Delete Account </a></li>
 							</ul>
 						</div>
 						<!-- /.navbar-collapse -->
@@ -95,40 +96,10 @@ tr:nth-child(even)
 		</div>
 		<div class="col-md-10 content">
 			<div class="panel panel-default">
-				<div class="panel-heading">Activate Fund Transfer Requests</div>
+				<div class="panel-heading">Success</div>
 				<div class="panel-body">
-				<%List<FundTransferRequestModel> unApprovedList = (List)request.getAttribute("UnApprovedTransferFunds"); %>
-				<%if(unApprovedList.isEmpty()) 
-				{ %>
-				<%= "No Transafer Fund Requests " %>
-				<%} else { %>
-					<table>
-					<tr>
-					<th>Account Number</th>
-					<th>Name</th>
-					<th>Customer ID</th>
-					<th>Request Time</th>
-					<th>Action</th>
-				</tr>
-				<%
-					for(FundTransferRequestModel fr : unApprovedList)
-					{
-				%>
-				<tr>
-					<td><%=fr.getUserModel().getAccountModel().getAccount_no() %></td>
-					<td><%=fr.getUserModel().getFirstName()+" "+fr.getUserModel().getMiddleName()+" "+fr.getUserModel().getLastName() %>
-					<td><%=fr.getUserModel().getCustomerID() %></td>
-					<td><%=fr.getRequestTime() %></td>
-					<td><a href="AdminLinkTransferFundsController?module=<%= fr.getUserModel().getCustomerID() %>">Activate Transfer Funds</a><br>
-</td>
-					
-				</tr>
-				<%
-					}
-				%>
-			</table>
-				
-			<% } %>	
+				<% String message = (String)request.getAttribute("message"); %>
+					<%= message %>	
 				
 				</div>
 			</div>

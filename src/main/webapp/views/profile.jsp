@@ -11,18 +11,23 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script>
+
 <%
 UserModel currentUser = (UserModel) session.getAttribute("userRecord");
 %>
-</script>
 
+<%--<%if(currentUser.getAccountModel().getAccount_no().equals(null)) 
+{
+
+<%} else { %>
 <script>
 function balance() {
 	document.getElementById("p1").innerHTML = "<h3>"+"Your current balance is "+"</h3>"+"<h3>"+
 	 <%=currentUser.getAccountModel().getBalance()%>+"</h3>";
 }
 </script>
+<%} %>--%>
+
 </head>
 <body>
 	<%@include file="profileheader.jsp"%>
@@ -104,8 +109,10 @@ function balance() {
 			<div class="panel panel-default">
 				<div class="panel-heading">Welcome <%=currentUser.getFirstName() %></div>
 				<div class="panel-body">
-				<button style="align:center" onclick="balance()">Check Balance</button>
+				
+				<%--<button style="align:center" onclick="balance()">Check Balance</button>
 					<p id="p1" style="color: green; text-align : center;"></p>
+					<%} %> --%>
 					<pre>
 			Alliance Bank welcomes you to explore the world of premier banking in India.
 			In this section, you can access detailed information about your account,

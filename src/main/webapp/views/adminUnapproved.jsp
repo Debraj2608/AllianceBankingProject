@@ -1,4 +1,4 @@
-<%@ page import="com.alliance.model.UserModel, java.util.*" language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page import="com.alliance.model.UserModel, java.util.*, java.text.* " language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -98,11 +98,16 @@ tr:nth-child(even)
 			<div class="panel panel-default">
 				<div class="panel-heading">Link Accounts</div>
 				<div class="panel-body">
+				
 				<%  
                  List <UserModel> as=new ArrayList<UserModel>();
 
 	             as=(List)request.getAttribute("Userdetails"); 
 				%>
+				
+				<%if(as.isEmpty()) { %>
+				<%= "No Accounts to be linked" %>
+				<%} else { %>
 		
 				<table>
 			<tr>
@@ -119,10 +124,12 @@ tr:nth-child(even)
 			for(UserModel list : as)
 			{
 		%>
+		<% SimpleDateFormat sdf = new SimpleDateFormat("dd-MMMM-yyyy"); 
+				   String dateOfBirth = sdf.format(list.getDob()); %>
 		<tr>
 			<td><%=list.getCustomerID() %></td>
 			<td><%=list.getFirstName()+" "+list.getMiddleName()+" "+list.getLastName() %>
-			<td><%=list.getDob() %></td>
+			<td><%= dateOfBirth %></td>
 			<td><%=list.getCity() %></td>
 			<td><%=list.getContactNumber() %></td>
 			<td><%=list.getOccupation() %></td>
@@ -134,7 +141,7 @@ tr:nth-child(even)
 		%>
 	</table>
 								
-	
+	<%} %>
 				
 				
 				

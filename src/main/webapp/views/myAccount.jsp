@@ -1,10 +1,10 @@
-<%@ page import="com.alliance.model.UserModel" language="java"
+<%@ page import="com.alliance.model.UserModel, java.util.*, java.text.* " language="java"
 	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Profile</title>
+<title>My Account</title>
 
 <style type="text/css">
 table 
@@ -16,7 +16,7 @@ table
 
 td, th 
 {
-	border: 1px solid #dddddd;
+	border: 1px solid #dddddd;																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																			
 	text-align: left;
 	padding: 8px;
 }
@@ -91,23 +91,24 @@ tr:nth-child(even)
 										class="glyphicon glyphicon-dashboard"></span> Dashboard </a></li>
 								<li><a href="UpdatePageRedirectController"><span
 										class="glyphicon glyphicon-pencil"></span> Update Profile </a></li>
-								<li><a href="MyAccountController"><span
-										class="glyphicon glyphicon-pencil"></span> My Account </a></li>	
-								<%
+							<%  
 									boolean status = currentUser.isFundsTransferStatus();
-									if (status == false) {
-								%>
+									if(status==false)
+									{%>
 								<li><a href="FundTransferRequestController"><span
-										class="glyphicon glyphicon-pencil"></span> Request for
-										transfer services </a></li>
-								<%
-									} else {
-								%>
+										class="glyphicon glyphicon-pencil"></span> Request for transfer services </a></li>
+										<%} 
+										else
+										{%>			
 								<li><a href="TransferPageRefirectController"><span
 										class="glyphicon glyphicon-pencil"></span> Transfer Funds </a></li>
-								<%
-									}
-								%>
+										<% }%>
+								<li><a href="DepositPageRedirectController"><span
+										class="glyphicon glyphicon-pencil"></span> Deposit </a></li>		
+								<li><a href="MyAccountController"><span
+										class="glyphicon glyphicon-pencil"></span> My Account </a></li>		
+								<li><a href="DeleteAccountController"><span
+										class="glyphicon glyphicon-pencil"></span> Delete Account </a></li>
 							</ul>
 						</div>
 					</nav>
@@ -118,24 +119,32 @@ tr:nth-child(even)
 			<div class="panel panel-default">
 				<div class="panel-heading">Your Account</div>
 				<div class="panel-body">
-				
-
+				<% SimpleDateFormat sdf = new SimpleDateFormat("dd-MMMM-yyyy"); 
+				   String dateOfBirth = sdf.format(currentUser.getDob()); %>
 				<table style="width:100%">
 				<tr>
 				  <th>Customer ID</th>
     			  <td>&nbsp;&nbsp;<%= currentUser.getCustomerID() %></td>
   				</tr>
+  				<tr>
+				  <th>Account Number</th>
+    			  <td>&nbsp;&nbsp;<%= currentUser.getAccountModel().getAccount_no() %></td>
+  				</tr>
 				<tr>
 				  <th>Name</th>
     			  <td>&nbsp;&nbsp;<%= currentUser.getFirstName()+" "+currentUser.getMiddleName()+" "+currentUser.getLastName() %>  </td>
   				</tr>
-  				  <tr>
+  				<tr>
+                  <th>Account Balance</th>
+                  <td>&nbsp;&nbsp;<%= "Rs."+currentUser.getAccountModel().getBalance() %></td>
+                </tr>
+  				<tr>
                   <th>Email</th>
                   <td>&nbsp;&nbsp;<%= currentUser.getEmail() %></td>
                 </tr>
                   <tr>
                   <th>Date of Birth</th>
-                  <td>&nbsp;&nbsp;<%= currentUser.getDob() %></td>
+                  <td>&nbsp;&nbsp;<%= dateOfBirth %></td>
                 </tr>
                 <tr>
                   <th>Contact Number</th>

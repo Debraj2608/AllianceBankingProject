@@ -40,15 +40,25 @@ public class FundTransferRequestController extends HttpServlet {
 		FundTransferRequestModel fTrRequestModel = new FundTransferRequestModel();
 		fTrRequestModel.setUserModel(user);
 		fTrRequestModel.setRequestTime(d);
-		boolean status = fTrReqBO.requestSent(fTrRequestModel);
+		int i = fTrReqBO.requestSent(fTrRequestModel);
 		RequestDispatcher view = null;
-		if(status)
+		if(i==1)
 		{
-			view = request.getRequestDispatcher("views/success.jsp");
+			String message = "Your request has been successfully submitted.";
+			request.setAttribute("message", message);
+			view = request.getRequestDispatcher("views/userSuccess.jsp");
+		}
+		else if(i==2)
+		{
+			String message = "No account number is linked with you so request cannot be completed.";
+			request.setAttribute("message", message);
+			view = request.getRequestDispatcher("views/userError.jsp");
 		}
 		else
 		{
-			view = request.getRequestDispatcher("views/error.jsp");
+			String message = "Your request is already under process.";
+			request.setAttribute("message", message);
+			view = request.getRequestDispatcher("views/userError.jsp");
 		}
 		view.forward(request, response);
 	}

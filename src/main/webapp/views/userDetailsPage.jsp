@@ -5,14 +5,24 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Registration</title>
-<style>
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
+<style type="text/css">
+table 
+{
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
 }
-th, td {
-  padding: 5px;
-  text-align: left;
+
+td, th 
+{
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even) 
+{
+	background-color: #dddddd;
 }
 </style>
 <meta name="viewport" content="width=device-width, initial-scale=1">

@@ -89,23 +89,24 @@ tr:nth-child(even)
 										class="glyphicon glyphicon-dashboard"></span> Dashboard </a></li>
 								<li><a href="UpdatePageRedirectController"><span
 										class="glyphicon glyphicon-pencil"></span> Update Profile </a></li>
-								<li><a href="MyAccountController"><span
-										class="glyphicon glyphicon-pencil"></span> My Account </a></li>	
-								<%
+							<%  
 									boolean status = currentUser.isFundsTransferStatus();
-									if (status == false) {
-								%>
+									if(status==false)
+									{%>
 								<li><a href="FundTransferRequestController"><span
-										class="glyphicon glyphicon-pencil"></span> Request for
-										transfer services </a></li>
-								<%
-									} else {
-								%>
+										class="glyphicon glyphicon-pencil"></span> Request for transfer services </a></li>
+										<%} 
+										else
+										{%>			
 								<li><a href="TransferPageRefirectController"><span
 										class="glyphicon glyphicon-pencil"></span> Transfer Funds </a></li>
-								<%
-									}
-								%>
+										<% }%>
+								<li><a href="DepositPageRedirectController"><span
+										class="glyphicon glyphicon-pencil"></span> Deposit </a></li>		
+								<li><a href="MyAccountController"><span
+										class="glyphicon glyphicon-pencil"></span> My Account </a></li>		
+								<li><a href="DeleteAccountController"><span
+										class="glyphicon glyphicon-pencil"></span> Delete Account </a></li>
 							</ul>
 						</div>
 					</nav>
@@ -114,9 +115,9 @@ tr:nth-child(even)
 		</div>
 		<div class="col-md-10 content">
 			<div class="panel panel-default">
-				<div class="panel-heading">Your Account</div>
+				<div class="panel-heading">Transaction Details</div>
 				<div class="panel-body">
-				<h2>Transaction Details</h2>
+				
 
 		<%
 			List<TransactionModel> transactionList = (List) request.getAttribute("transactionList");

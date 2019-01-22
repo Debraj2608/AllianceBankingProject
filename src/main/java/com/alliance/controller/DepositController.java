@@ -47,13 +47,16 @@ public class DepositController extends HttpServlet {
 		RequestDispatcher view = null;
 		if(status)
 		{
-			view = request.getRequestDispatcher("views/success.jsp");
+			String success = "Your amount has been successfully deposited.";
+			request.setAttribute("message", success);
+			view = request.getRequestDispatcher("views/userSuccess.jsp");
 		}
 		else
 		{
-			view = request.getRequestDispatcher("views/error.jsp");
+			String error = "Your request is not successful. Please try after some time.";
+			request.setAttribute("message", error);
+			view = request.getRequestDispatcher("views/userError.jsp");
 		}
 		view.forward(request, response);
 	}
-
 }

@@ -101,16 +101,37 @@ public class TransactionController extends HttpServlet
 			boolean status = transactionBO.doTransaction(transactionModelDebit,transactionModelCredit, creditAccount, debitAccount);	
 			if(status)
 			{
-				view = request.getRequestDispatcher("views/success.jsp");
+				String message = "Your transaction is successfully completed.";
+				request.setAttribute("message", message);
+				view = request.getRequestDispatcher("views/userSuccess.jsp");
 			}
 			else
 			{
-				view = request.getRequestDispatcher("views/error.jsp");
+				String message = "Your transaction could not be completed at the moment. \n Please try later.";
+				request.setAttribute("message", message);
+				view = request.getRequestDispatcher("views/userError.jsp");
 			}
 		}
 		else
 		{
-			view = request.getRequestDispatcher("views/error.jsp");
+			if(creditAccountValidated == false)
+			{
+				String message = "Your tansaction could not be completed.\n Please check the Account Number entered by you.";
+				request.setAttribute("message", message);
+				view = request.getRequestDispatcher("views/userError.jsp");
+			}
+			else if(checkDebitAccountBalance == false)
+			{
+				String message = "Your tansaction could not be completed.\n Insufficient balance";
+				request.setAttribute("message", message);
+				view = request.getRequestDispatcher("views/userError.jsp");
+			}
+			else
+			{
+				String message = "Your tansaction could not be completed. Please try after some time.";
+				request.setAttribute("message", message);
+				view = request.getRequestDispatcher("views/userError.jsp");
+			}
 		}
 		view.forward(request, response);
 	}
