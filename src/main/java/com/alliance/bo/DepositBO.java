@@ -27,7 +27,7 @@ public class DepositBO
 		transaction.setTransaction_amount(amount);
 		transaction.setTransaction_date(new Date());
 		transaction.setTransaction_id(transactionIDList.get(0));
-		transaction.setTransaction_type("deposit");
+		transaction.setTransaction_type("credit");
 		transaction.setToOrFromAccount("Self Deposit");
 		AccountModel account = user.getAccountModel();
 		String accountNo = account.getAccount_no();

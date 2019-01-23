@@ -39,11 +39,11 @@
 								class="form-control" type="password" name='password'
 								placeholder="password" />
 						</div>
-						<div class="checkbox">
+						<%-- <div class="checkbox">
 							<label> <input type="checkbox"> I agree to the <a
 								href="#">Terms and Conditions</a>
 							</label>
-						</div>
+						</div> --%>
 						<div class="col-md-12">
 							<div class="text-center">
 								<div class="form-actions">

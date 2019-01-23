@@ -31,7 +31,7 @@ public class GetTransactionListBO
 			int i = 1;
 			for(TransactionModel tm : list)
 			{	
-				System.out.println("inside while");
+				//System.out.println("inside while");
 				transactionList.add(tm);
 				i++;
 				if(i<=10)

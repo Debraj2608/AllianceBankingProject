@@ -197,6 +197,13 @@
   	<servlet-name>DepositController</servlet-name>
   	<servlet-class>com.alliance.controller.DepositController</servlet-class>
   </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>SearchController</display-name>
+  	<servlet-name>SearchController</servlet-name>
+  	<servlet-class>com.alliance.controller.SearchController</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>Register1Controller</servlet-name>
   	<url-pattern>/Register1Controller</url-pattern>
@@ -289,5 +296,9 @@
     <servlet-mapping>
     	<servlet-name>DepositController</servlet-name>
     	<url-pattern>/DepositController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>SearchController</servlet-name>
+    	<url-pattern>/SearchController</url-pattern>
     </servlet-mapping>
 </web-app>

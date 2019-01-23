@@ -4,7 +4,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Profile</title>
+<title>Admin</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
@@ -33,10 +35,15 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
-				<form class="navbar-form navbar-left" method="GET" role="search">
+				<form class="navbar-form navbar-left" method="post" action="SearchController">
 					<div class="form-group">
-						<input type="text" name="q" class="form-control"
-							placeholder="Search">
+					<select name="stype" class="form-control">
+					           <option value="actype">AccountType</option>
+  							  <option value="acid">accountID</option>
+   							 <option value="uname">clientName</option>
+ 					 </select>
+ 					 &nbsp;
+						<input type="text" name="user" class="form-control">
 					</div>
 					<button type="submit" class="btn btn-default">
 						<i class="glyphicon glyphicon-search"></i>
