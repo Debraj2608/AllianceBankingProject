@@ -1,4 +1,4 @@
-<%@ page import="com.alliance.model.UserModel" language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page import="com.alliance.model.UserModel, com.alliance.model.AccountModel" language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -69,8 +69,8 @@ UserModel currentUser = (UserModel) session.getAttribute("userRecord");
 										class="glyphicon glyphicon-dashboard"></span> Dashboard </a></li>
 								<li><a href="UpdatePageRedirectController"><span
 										class="glyphicon glyphicon-pencil"></span> Update Profile </a></li>
-							<%  
-									boolean status = currentUser.isFundsTransferStatus();
+							  
+								<%	boolean status = currentUser.isFundsTransferStatus();
 									if(status==false)
 									{%>
 								<li><a href="FundTransferRequestController"><span
@@ -81,12 +81,21 @@ UserModel currentUser = (UserModel) session.getAttribute("userRecord");
 								<li><a href="TransferPageRefirectController"><span
 										class="glyphicon glyphicon-pencil"></span> Transfer Funds </a></li>
 										<% }%>
+								<% AccountModel accountModel = currentUser.getAccountModel();
+								if(accountModel == null) 
+								{%>		
+								<li><a href="MyAccountController"><span
+										class="glyphicon glyphicon-pencil"></span> My Account </a></li>		
+								<li><a href="DeleteAccountController"><span
+										class="glyphicon glyphicon-pencil"></span> Delete Account </a></li>
+								<%} else { %>
 								<li><a href="DepositPageRedirectController"><span
 										class="glyphicon glyphicon-pencil"></span> Deposit </a></li>		
 								<li><a href="MyAccountController"><span
 										class="glyphicon glyphicon-pencil"></span> My Account </a></li>		
 								<li><a href="DeleteAccountController"><span
 										class="glyphicon glyphicon-pencil"></span> Delete Account </a></li>
+								<%} %>
 							</ul>
 						</div>
 						<!-- /.navbar-collapse -->
@@ -96,7 +105,7 @@ UserModel currentUser = (UserModel) session.getAttribute("userRecord");
 		</div>
 		<div class="col-md-10 content">
 			<div class="panel panel-default">
-				<div class="panel-heading">Success</div>
+				<div class="panel-heading">Error</div>
 				<div class="panel-body">
 				<% String message = (String)request.getAttribute("message"); %>
 					<%= message %>	

@@ -24,6 +24,8 @@ public class TransactionModel implements Serializable {
 	private Date transaction_date;
 	@Column
 	private double transaction_amount;
+	@Column(name = "To_or_From_Account")
+	private String toOrFromAccount;
 	
 	public String getTransaction_id() {
 		return transaction_id;
@@ -48,6 +50,12 @@ public class TransactionModel implements Serializable {
 	}
 	public void setTransaction_amount(double transaction_amount) {
 		this.transaction_amount = transaction_amount;
+	}
+	public String getToOrFromAccount() {
+		return toOrFromAccount;
+	}
+	public void setToOrFromAccount(String toOrFromAccount) {
+		this.toOrFromAccount = toOrFromAccount;
 	}
 	
 }

@@ -1,4 +1,4 @@
-<%@ page import="com.alliance.model.UserModel, java.util.*, java.text.* " language="java"
+<%@ page import="com.alliance.model.UserModel,com.alliance.model.AccountModel, java.util.*, java.text.* " language="java"
 	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -36,7 +36,8 @@ tr:nth-child(even)
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <%
-	UserModel currentUser = (UserModel) session.getAttribute("userRecord");
+	UserModel currentUser = (UserModel) request.getAttribute("updates");
+	
 %>
 
 </head>
@@ -89,10 +90,10 @@ tr:nth-child(even)
 							<ul class="nav navbar-nav">
 								<li class="active"><a href="#"><span
 										class="glyphicon glyphicon-dashboard"></span> Dashboard </a></li>
-								<li><a href="UpdatePageRedirectController"><span
+							<li><a href="UpdatePageRedirectController"><span
 										class="glyphicon glyphicon-pencil"></span> Update Profile </a></li>
-							<%  
-									boolean status = currentUser.isFundsTransferStatus();
+							  
+								<%	boolean status = currentUser.isFundsTransferStatus();
 									if(status==false)
 									{%>
 								<li><a href="FundTransferRequestController"><span
@@ -103,12 +104,21 @@ tr:nth-child(even)
 								<li><a href="TransferPageRefirectController"><span
 										class="glyphicon glyphicon-pencil"></span> Transfer Funds </a></li>
 										<% }%>
+								<% AccountModel accountModel = currentUser.getAccountModel();
+								if(accountModel == null) 
+								{%>		
+								<li><a href="MyAccountController"><span
+										class="glyphicon glyphicon-pencil"></span> My Account </a></li>		
+								<li><a href="DeleteAccountController"><span
+										class="glyphicon glyphicon-pencil"></span> Delete Account </a></li>
+								<%} else { %>
 								<li><a href="DepositPageRedirectController"><span
 										class="glyphicon glyphicon-pencil"></span> Deposit </a></li>		
 								<li><a href="MyAccountController"><span
 										class="glyphicon glyphicon-pencil"></span> My Account </a></li>		
 								<li><a href="DeleteAccountController"><span
 										class="glyphicon glyphicon-pencil"></span> Delete Account </a></li>
+								<%} %>	
 							</ul>
 						</div>
 					</nav>
@@ -120,23 +130,36 @@ tr:nth-child(even)
 				<div class="panel-heading">Your Account</div>
 				<div class="panel-body">
 				<% SimpleDateFormat sdf = new SimpleDateFormat("dd-MMMM-yyyy"); 
-				   String dateOfBirth = sdf.format(currentUser.getDob()); %>
+				   String dateOfBirth = sdf.format(currentUser.getDob()); 
+				   %>
 				<table style="width:100%">
 				<tr>
 				  <th>Customer ID</th>
     			  <td>&nbsp;&nbsp;<%= currentUser.getCustomerID() %></td>
   				</tr>
+  				
   				<tr>
 				  <th>Account Number</th>
+				  <% if(accountModel == null)
+				  {%>
+				  <td>&nbsp;&nbsp;<%= "Not assigned." %></td>
+				  <%} else { %>
     			  <td>&nbsp;&nbsp;<%= currentUser.getAccountModel().getAccount_no() %></td>
+    			  <%} %>
   				</tr>
 				<tr>
 				  <th>Name</th>
     			  <td>&nbsp;&nbsp;<%= currentUser.getFirstName()+" "+currentUser.getMiddleName()+" "+currentUser.getLastName() %>  </td>
   				</tr>
   				<tr>
+  				
                   <th>Account Balance</th>
+                  <% if(accountModel == null) 
+  				  {%>
+  				  <td>&nbsp;&nbsp;<%= "Not available" %></td>
+  				  <%} else { %>
                   <td>&nbsp;&nbsp;<%= "Rs."+currentUser.getAccountModel().getBalance() %></td>
+                  <%} %>
                 </tr>
   				<tr>
                   <th>Email</th>
@@ -156,8 +179,11 @@ tr:nth-child(even)
                 </tr>
           </table>
 				<br>
+				<% if(accountModel != null) 
+				{ %>
 			<li><a href="MiniStatementController"><span
 			class="glyphicon glyphicon-pencil"></span> Check mini statement </a></li>
+			<%} %>
 			</div>
 			
 		</div>

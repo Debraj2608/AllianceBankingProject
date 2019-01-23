@@ -1,4 +1,4 @@
-<%@ page import="com.alliance.model.UserModel" language="java"
+<%@ page import="com.alliance.model.UserModel, com.alliance.model.AccountModel" language="java"
 	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -71,8 +71,8 @@
 										class="glyphicon glyphicon-dashboard"></span> Dashboard </a></li>
 								<li><a href="UpdatePageRedirectController"><span
 										class="glyphicon glyphicon-pencil"></span> Update Profile </a></li>
-							<%  
-									boolean status = currentUser.isFundsTransferStatus();
+							  
+								<%	boolean status = currentUser.isFundsTransferStatus();
 									if(status==false)
 									{%>
 								<li><a href="FundTransferRequestController"><span
@@ -83,12 +83,21 @@
 								<li><a href="TransferPageRefirectController"><span
 										class="glyphicon glyphicon-pencil"></span> Transfer Funds </a></li>
 										<% }%>
+								<% AccountModel accountModel = currentUser.getAccountModel();
+								if(accountModel == null) 
+								{%>		
+								<li><a href="MyAccountController"><span
+										class="glyphicon glyphicon-pencil"></span> My Account </a></li>		
+								<li><a href="DeleteAccountController"><span
+										class="glyphicon glyphicon-pencil"></span> Delete Account </a></li>
+								<%} else { %>
 								<li><a href="DepositPageRedirectController"><span
 										class="glyphicon glyphicon-pencil"></span> Deposit </a></li>		
 								<li><a href="MyAccountController"><span
 										class="glyphicon glyphicon-pencil"></span> My Account </a></li>		
 								<li><a href="DeleteAccountController"><span
 										class="glyphicon glyphicon-pencil"></span> Delete Account </a></li>
+								<%} %>							
 							</ul>
 						</div>
 					</nav>

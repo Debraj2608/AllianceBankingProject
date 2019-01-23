@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.alliance.bo.MyAccountBO;
+import com.alliance.model.UserModel;
+
 /**
  * Servlet implementation class MyAccountController
  */
@@ -26,11 +29,16 @@ public class MyAccountController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		MyAccountBO myAccountBO = new MyAccountBO();
 		HttpSession session = request.getSession(false);
+		UserModel user = (UserModel) session.getAttribute("userRecord");
+		String customerID = user.getCustomerID();
+		UserModel userUpdated = myAccountBO.getUpdates(customerID);
+		request.setAttribute("updates", userUpdated);
 		RequestDispatcher view = request.getRequestDispatcher("views/myAccount.jsp");
 		view.forward(request, response);
-		
 	}
 
 	/**

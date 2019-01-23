@@ -1,4 +1,4 @@
-<%@ page import="com.alliance.model.UserModel" language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page import="com.alliance.model.UserModel, com.alliance.model.AccountModel" language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -16,17 +16,18 @@
 UserModel currentUser = (UserModel) session.getAttribute("userRecord");
 %>
 
-<%--<%if(currentUser.getAccountModel().getAccount_no().equals(null)) 
+
+<%if(currentUser.getAccountModel()==null) 
 {
 
-<%} else { %>
+} else { %>
 <script>
 function balance() {
 	document.getElementById("p1").innerHTML = "<h3>"+"Your current balance is "+"</h3>"+"<h3>"+
 	 <%=currentUser.getAccountModel().getBalance()%>+"</h3>";
 }
 </script>
-<%} %>--%>
+<%} %> 
 
 </head>
 <body>
@@ -80,8 +81,8 @@ function balance() {
 										class="glyphicon glyphicon-dashboard"></span> Dashboard </a></li>
 								<li><a href="UpdatePageRedirectController"><span
 										class="glyphicon glyphicon-pencil"></span> Update Profile </a></li>
-							<%  
-									boolean status = currentUser.isFundsTransferStatus();
+							  
+								<%	boolean status = currentUser.isFundsTransferStatus();
 									if(status==false)
 									{%>
 								<li><a href="FundTransferRequestController"><span
@@ -92,12 +93,21 @@ function balance() {
 								<li><a href="TransferPageRefirectController"><span
 										class="glyphicon glyphicon-pencil"></span> Transfer Funds </a></li>
 										<% }%>
+								<% AccountModel accountModel = currentUser.getAccountModel();
+								if(accountModel == null) 
+								{%>		
+								<li><a href="MyAccountController"><span
+										class="glyphicon glyphicon-pencil"></span> My Account </a></li>		
+								<li><a href="DeleteAccountController"><span
+										class="glyphicon glyphicon-pencil"></span> Delete Account </a></li>
+								<%} else { %>
 								<li><a href="DepositPageRedirectController"><span
 										class="glyphicon glyphicon-pencil"></span> Deposit </a></li>		
 								<li><a href="MyAccountController"><span
 										class="glyphicon glyphicon-pencil"></span> My Account </a></li>		
 								<li><a href="DeleteAccountController"><span
 										class="glyphicon glyphicon-pencil"></span> Delete Account </a></li>
+								<%} %>							
 							</ul>
 						</div>
 						<!-- /.navbar-collapse -->
@@ -109,10 +119,11 @@ function balance() {
 			<div class="panel panel-default">
 				<div class="panel-heading">Welcome <%=currentUser.getFirstName() %></div>
 				<div class="panel-body">
-				
-				<%--<button style="align:center" onclick="balance()">Check Balance</button>
+				<% if(currentUser.getAccountModel() != null) 
+				{%>
+				<button style="align:center" onclick="balance()">Check Balance</button>
 					<p id="p1" style="color: green; text-align : center;"></p>
-					<%} %> --%>
+				<%} %>	
 					<pre>
 			Alliance Bank welcomes you to explore the world of premier banking in India.
 			In this section, you can access detailed information about your account,
@@ -124,7 +135,5 @@ function balance() {
 		</div>
 	</div>
 	<%@include file="footer.jsp"%>
-
-
 </body>
 </html>

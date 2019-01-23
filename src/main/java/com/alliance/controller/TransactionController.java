@@ -87,6 +87,7 @@ public class TransactionController extends HttpServlet
 			transactionModelDebit.setTransaction_date(new Date());
 			transactionModelDebit.setTransaction_amount(t_amount);
 			transactionModelDebit.setTransaction_type("debit");
+			transactionModelDebit.setToOrFromAccount(creditAccount);
 			//---------------------------------------------------------------------------------
 			
 			//Credit Account-------------------------------------------------------------------
@@ -96,6 +97,7 @@ public class TransactionController extends HttpServlet
 			transactionModelCredit.setTransaction_date(new Date());
 			transactionModelCredit.setTransaction_amount(t_amount);
 			transactionModelCredit.setTransaction_type("credit");
+			transactionModelCredit.setToOrFromAccount(debitAccount);
 			//----------------------------------------------------------------------------------
 			TransactionBO transactionBO = new TransactionBO();
 			boolean status = transactionBO.doTransaction(transactionModelDebit,transactionModelCredit, creditAccount, debitAccount);	

@@ -19,8 +19,8 @@ public class CheckDebitAccountBalanceDAO
 			AccountModel account = session.get(AccountModel.class, accountNumber);
 			double currentBalance = account.getBalance();
 			tx.commit();
-			System.out.println(currentBalance);
-			System.out.println(transactionAmount);
+			//System.out.println(currentBalance);
+			//System.out.println(transactionAmount);
 			if(currentBalance>=transactionAmount)
 			{
 				status = true;
