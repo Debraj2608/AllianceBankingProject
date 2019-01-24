@@ -1,4 +1,4 @@
-<%@ page import="com.alliance.model.UserModel" language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page import="com.alliance.model.*" language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -13,8 +13,19 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<% AdminModel admin = (AdminModel)session.getAttribute("admin"); %>
 </head>
 <body>
+<% if(admin == null) 
+	{%>
+	<div class="overlay"></div>
+<div class="terminal">
+  <h1>Error <span class="errorcode">404</span></h1>
+  
+  <p class="output">Please try again </p>
+
+</div>
+	<%} else {%>
 	<%@include file="profileheader.jsp"%>
 	<nav class="navbar navbar-default navbar-static-top">
 		<div class="container-fluid">
@@ -72,6 +83,8 @@
 										class="glyphicon glyphicon-pencil"></span> Link Accounts </a></li>	
 								<li><a href="AdminFundTransferActivationController"><span
 										class="glyphicon glyphicon-pencil"></span> Transfer Funds Requests </a></li>
+								<li><a href="AdminCitiesRedirectController"><span
+										class="glyphicon glyphicon-pencil"></span> Cities & Branch codes </a></li>		
 
 							</ul>
 						</div>
@@ -94,6 +107,6 @@
 	</div>
 	<%@include file="footer.jsp"%>
 
-
+<%} %>
 </body>
 </html>

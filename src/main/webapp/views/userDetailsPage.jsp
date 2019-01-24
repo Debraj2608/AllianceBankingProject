@@ -1,4 +1,4 @@
-<%@ page import = "com.alliance.model.UserModel" language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page import = "com.alliance.model.UserModel, java.text.*, java.util.*" language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -49,7 +49,8 @@ tr:nth-child(even)
 			<div class="panel panel-default">
 				<div class="panel-heading"></div>
 				<div class="panel-body">
-				
+				<% SimpleDateFormat sdf = new SimpleDateFormat("dd-MMMM-yyyy"); 
+				   String date = sdf.format(user.getDob()); %>
 				<h2>Your details:</h2>
 
 				<table style="width:100%">
@@ -67,7 +68,7 @@ tr:nth-child(even)
                 </tr>
                   <tr>
                   <th>Date of Birth:</th>
-                  <td>&nbsp;&nbsp;<%= user.getDob() %></td>
+                  <td>&nbsp;&nbsp;<%= date %></td>
                 </tr>
                 <tr>
                   <th>Contact Number:</th>

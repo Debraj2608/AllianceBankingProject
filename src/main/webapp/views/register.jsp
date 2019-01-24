@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page import = "com.alliance.model.*, java.util.*" language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -78,14 +78,14 @@ function reg() {
 					document.getElementById("p4").innerHTML = "Email-ID is Mandatory";
 				}
 			} else {
-				document.getElementById("p3").innerHTML = "Alphabets Only in LastName";
+				document.getElementById("p3").innerHTML = "Alphabets only in LastName";
 			}
 		} else {
-			document.getElementById("p2").innerHTML = "Alphabets Only MiddleName";
+			document.getElementById("p2").innerHTML = "Alphabets only in MiddleName";
 		}
 
 	} else {
-		document.getElementById("p1").innerHTML = "Alphabets Only FirstName";
+		document.getElementById("p1").innerHTML = "Alphabets only in FirstName";
 	}
 	return status;
 
@@ -99,6 +99,8 @@ function reg() {
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
+<% List<BranchModel> branchModel = (List) request.getAttribute("cityList"); %>
+
 <body style="background-color: lightblue;">
 	<%@include file="header.jsp"%>
 	<div class="container">
@@ -107,7 +109,7 @@ function reg() {
 		</div>
 	</div>
 	<div id="fullform">
-		<form class="form-horizontal" onSubmit="return reg()" role="form"  method="post" action="RegisterController">
+		<form class="form-horizontal" onSubmit="return reg()" role="form"  method="post" action="Register1Controller">
 			<div class="form-group">
 				<label for="firstname" class="control-label col-sm-3">First
 					Name:</label>
@@ -168,8 +170,12 @@ function reg() {
 			<div class="form-group">
 				<label for="city" class="control-label col-sm-3">City:</label>
 				<div class="col-sm-8">
-					<input type="text" class="form-control" name="city" id="city"
-						placeholder="Enter City">
+					<select type="text" class="form-control" name = "city" id = "city">
+					<% for(BranchModel list : branchModel) 
+					{ %>
+					<option value = "<%= list.getCity() %>"><%= list.getCity() %></option>
+					<% } %>
+					</select>
 					<p id="p7" style="color: red"></p>
 				</div>
 			</div>

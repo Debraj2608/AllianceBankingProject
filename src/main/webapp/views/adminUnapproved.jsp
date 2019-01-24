@@ -1,4 +1,4 @@
-<%@ page import="com.alliance.model.UserModel, java.util.*, java.text.* " language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page import="com.alliance.model.*, java.util.*, java.text.* " language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -32,8 +32,19 @@ tr:nth-child(even)
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<% AdminModel admin = (AdminModel)session.getAttribute("admin"); %>
 </head>
 <body>
+<% if(admin == null) 
+	{%>
+	<div class="overlay"></div>
+<div class="terminal">
+  <h1>Error <span class="errorcode">404</span></h1>
+  
+  <p class="output">Please try again </p>
+
+</div>
+	<%} else {%>
 	<%@include file="profileheader.jsp"%>
 	<nav class="navbar navbar-default navbar-static-top">
 		<div class="container-fluid">
@@ -86,7 +97,8 @@ tr:nth-child(even)
 										class="glyphicon glyphicon-pencil"></span> Link Accounts </a></li>	
 								<li><a href="AdminFundTransferActivationController"><span
 										class="glyphicon glyphicon-pencil"></span> Transfer Funds Requests </a></li>
-
+								<li><a href="AdminCitiesRedirectController"><span
+										class="glyphicon glyphicon-pencil"></span> Cities & Branch codes </a></li>
 							</ul>
 						</div>
 						<!-- /.navbar-collapse -->
@@ -151,6 +163,6 @@ tr:nth-child(even)
 	</div>
 	<%@include file="footer.jsp"%>
 
-
+<%} %>
 </body>
 </html>

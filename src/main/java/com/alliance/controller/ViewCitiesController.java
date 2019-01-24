@@ -1,6 +1,7 @@
 package com.alliance.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,19 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.alliance.bo.DeleteAccountBO;
-import com.alliance.model.UserModel;
+import com.alliance.bo.ViewCitiesBO;
+import com.alliance.model.BranchModel;
 
 /**
- * Servlet implementation class DeleteAccountController
+ * Servlet implementation class ViewCitiesController
  */
-public class DeleteAccountController extends HttpServlet {
+public class ViewCitiesController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteAccountController() {
+    public ViewCitiesController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,18 +31,21 @@ public class DeleteAccountController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		DeleteAccountBO deleteAccBO = new DeleteAccountBO();
-		HttpSession session = request.getSession(false);
-		UserModel model = (UserModel) session.getAttribute("userRecord");
-		boolean status = deleteAccBO.deleteAccount(model);
+		BranchModel branchModel = new BranchModel();
+		ViewCitiesBO viewCitiesBO = new ViewCitiesBO();
+		HttpSession session = request.getSession();
+		List<BranchModel> list = viewCitiesBO.branchModelList();
 		RequestDispatcher view = null;
-		if(status)
+		if(list==null)
 		{
-			view = request.getRequestDispatcher("views/success.jsp");
+			String message = "An error occured. Please try later.";
+			request.setAttribute("message", message);
+			view = request.getRequestDispatcher("views/adminerror.jsp");
 		}
 		else
 		{
-			view = request.getRequestDispatcher("views/error.jsp");
+			request.setAttribute("list", list);
+			view = request.getRequestDispatcher("views/branchlist.jsp");
 		}
 		view.forward(request, response);
 	}

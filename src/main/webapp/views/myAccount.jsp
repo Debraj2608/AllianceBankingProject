@@ -42,6 +42,16 @@ tr:nth-child(even)
 
 </head>
 <body>
+<% if(currentUser == null) 
+	{%>
+	<div class="overlay"></div>
+<div class="terminal">
+  <h1>Error <span class="errorcode">404</span></h1>
+  
+  <p class="output">Please try again </p>
+
+</div>
+	<%} else {%>
 	<%@include file="profileheader.jsp"%>
 	<nav class="navbar navbar-default navbar-static-top">
 		<div class="container-fluid">
@@ -109,15 +119,13 @@ tr:nth-child(even)
 								{%>		
 								<li><a href="MyAccountController"><span
 										class="glyphicon glyphicon-pencil"></span> My Account </a></li>		
-								<li><a href="DeleteAccountController"><span
-										class="glyphicon glyphicon-pencil"></span> Delete Account </a></li>
+								
 								<%} else { %>
 								<li><a href="DepositPageRedirectController"><span
 										class="glyphicon glyphicon-pencil"></span> Deposit </a></li>		
 								<li><a href="MyAccountController"><span
 										class="glyphicon glyphicon-pencil"></span> My Account </a></li>		
-								<li><a href="DeleteAccountController"><span
-										class="glyphicon glyphicon-pencil"></span> Delete Account </a></li>
+								
 								<%} %>	
 							</ul>
 						</div>
@@ -190,5 +198,6 @@ tr:nth-child(even)
 	</div>
 	
 	<%@include file="footer.jsp"%>
+	<%} %>
 </body>
 </html>

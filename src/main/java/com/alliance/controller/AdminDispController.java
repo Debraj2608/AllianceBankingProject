@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.alliance.bo.AdminDispBO;
 import com.alliance.model.UserModel;
@@ -32,19 +33,16 @@ public class AdminDispController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		AdminDispBO ab=new AdminDispBO();
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		RequestDispatcher view = null;
+		AdminDispBO adminDispBO=new AdminDispBO();	
 		List<UserModel> as=new ArrayList<UserModel>();
-		
-		as=ab.returnUnapproved();
-		
-		
-		RequestDispatcher rs=request.getRequestDispatcher("views/adminUnapproved.jsp");
+		as=adminDispBO.returnUnapproved();
+		view=request.getRequestDispatcher("views/adminUnapproved.jsp");
 		request.setAttribute("Userdetails",as);
-		rs.forward(request, response);
+		
+		view.forward(request, response);
 		
 	}
 

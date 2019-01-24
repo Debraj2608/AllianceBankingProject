@@ -19,6 +19,16 @@ UserModel currentUser = (UserModel) session.getAttribute("userRecord");
 
 </head>
 <body>
+<% if(currentUser == null) 
+	{%>
+	<div class="overlay"></div>
+<div class="terminal">
+  <h1>Error <span class="errorcode">404</span></h1>
+  
+  <p class="output">Please try again </p>
+
+</div>
+	<%} else {%>
 	<%@include file="profileheader.jsp"%>
 	<nav class="navbar navbar-default navbar-static-top">
 		<div class="container-fluid">
@@ -116,6 +126,6 @@ UserModel currentUser = (UserModel) session.getAttribute("userRecord");
 	</div>
 	<%@include file="footer.jsp"%>
 
-
+<%} %>
 </body>
 </html>

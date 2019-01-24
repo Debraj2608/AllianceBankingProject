@@ -31,7 +31,8 @@ public class FundTransferRequestController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 		HttpSession session = request.getSession();
 		UserModel user = (UserModel) session.getAttribute("userRecord");
 		String customerID = user.getCustomerID();
@@ -41,6 +42,7 @@ public class FundTransferRequestController extends HttpServlet {
 		fTrRequestModel.setUserModel(user);
 		fTrRequestModel.setRequestTime(d);
 		int i = fTrReqBO.requestSent(fTrRequestModel);
+		//System.out.println(i+"servlet");
 		RequestDispatcher view = null;
 		if(i==1)
 		{

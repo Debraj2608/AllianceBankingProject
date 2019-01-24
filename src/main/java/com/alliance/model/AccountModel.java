@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -23,11 +24,11 @@ public class AccountModel implements Serializable {
 		
 		private String account_no;
 		
-		private String branch_code;
-		
 		private double balance;
 		
 		private List<TransactionModel> transactionList = new ArrayList<TransactionModel>();
+		
+		private BranchModel branchModel;
 		
 		@Id
 		public String getAccount_no() {
@@ -37,12 +38,12 @@ public class AccountModel implements Serializable {
 			this.account_no = account_no;
 		}
 		
-		@Column
-		public String getBranch_code() {
-			return branch_code;
+		@ManyToOne(fetch = FetchType.EAGER)
+		public BranchModel getBranchModel() {
+			return branchModel;
 		}
-		public void setBranch_code(String branch_code) {
-			this.branch_code = branch_code;
+		public void setBranchModel(BranchModel branchModel) {
+			this.branchModel = branchModel;
 		}
 		
 		@Column
@@ -53,7 +54,7 @@ public class AccountModel implements Serializable {
 			this.balance = balance;
 		}
 		
-		@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+		@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 		@JoinColumn(name = "AccountNumber")
 		public List<TransactionModel> getTransactionList() 
 		{

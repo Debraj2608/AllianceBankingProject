@@ -1,4 +1,4 @@
-<%@ page import="com.alliance.model.UserModel" language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page import="com.alliance.model.*" language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -11,8 +11,19 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<% AdminModel admin = (AdminModel)session.getAttribute("admin"); %>
 </head>
 <body>
+<% if(admin == null) 
+	{%>
+	<div class="overlay"></div>
+<div class="terminal">
+  <h1>Error <span class="errorcode">404</span></h1>
+  
+  <p class="output">Please try again </p>
+
+</div>
+	<%} else {%>
 	<%@include file="profileheader.jsp"%>
 	<nav class="navbar navbar-default navbar-static-top">
 		<div class="container-fluid">
@@ -87,6 +98,6 @@
 	</div>
 	<%@include file="footer.jsp"%>
 
-
+<%} %>
 </body>
 </html>

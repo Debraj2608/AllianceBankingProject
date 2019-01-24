@@ -16,7 +16,7 @@ public class FundTransferRequestDAO
 		try
 		{
 			tx = session.beginTransaction();
-			if(fTrRequestModel.getUserModel().getAccountModel().getAccount_no()!=null)
+			if(fTrRequestModel.getUserModel().getAccountModel()!=null)
 			{
 				session.save(fTrRequestModel);
 				tx.commit();
@@ -37,6 +37,7 @@ public class FundTransferRequestDAO
 		{
 			session.close();
 		}
+		//System.out.println(i+"DAO");
 		return i;
 	}
 }

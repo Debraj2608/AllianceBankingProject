@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.alliance.bo.AdminFundTransferActivationBO;
 import com.alliance.model.FundTransferRequestModel;
@@ -30,12 +31,14 @@ public class AdminFundTransferActivationController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		RequestDispatcher view = null;
 		AdminFundTransferActivationBO adFTrActBO = new AdminFundTransferActivationBO();
-		 List<FundTransferRequestModel> listUnapproved = adFTrActBO.unapprovedList();
+		List<FundTransferRequestModel> listUnapproved = adFTrActBO.unapprovedList();
 		//System.out.println(listUnapproved);
 		request.setAttribute("UnApprovedTransferFunds", listUnapproved);
-		RequestDispatcher view = request.getRequestDispatcher("views/AdminUnapprovedTransferFunds.jsp");
+		view = request.getRequestDispatcher("views/AdminUnapprovedTransferFunds.jsp");	
 		view.forward(request, response);
 	}
 

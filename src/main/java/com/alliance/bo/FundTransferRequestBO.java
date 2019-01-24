@@ -9,6 +9,7 @@ public class FundTransferRequestBO
 	public int requestSent(FundTransferRequestModel fTrRequestModel)
 	{
 		int i = fTrReqDAO.requestSent(fTrRequestModel);
+		//System.out.println(i+"BO");
 		return i;
 	}
 }

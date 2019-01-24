@@ -204,6 +204,34 @@
   	<servlet-name>SearchController</servlet-name>
   	<servlet-class>com.alliance.controller.SearchController</servlet-class>
   </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>AdminCitiesRedirectController</display-name>
+  	<servlet-name>AdminCitiesRedirectController</servlet-name>
+  	<servlet-class>com.alliance.controller.AdminCitiesRedirectController</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>UpdateCitiesController</display-name>
+  	<servlet-name>UpdateCitiesController</servlet-name>
+  	<servlet-class>com.alliance.controller.UpdateCitiesController</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>GenerateBranchCodeController</display-name>
+  	<servlet-name>GenerateBranchCodeController</servlet-name>
+  	<servlet-class>com.alliance.controller.GenerateBranchCodeController</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>ViewCitiesController</display-name>
+  	<servlet-name>ViewCitiesController</servlet-name>
+  	<servlet-class>com.alliance.controller.ViewCitiesController</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>Register1Controller</servlet-name>
   	<url-pattern>/Register1Controller</url-pattern>
@@ -300,5 +328,21 @@
     <servlet-mapping>
     	<servlet-name>SearchController</servlet-name>
     	<url-pattern>/SearchController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>AdminCitiesRedirectController</servlet-name>
+    	<url-pattern>/AdminCitiesRedirectController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>UpdateCitiesController</servlet-name>
+    	<url-pattern>/UpdateCitiesController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>GenerateBranchCodeController</servlet-name>
+    	<url-pattern>/GenerateBranchCodeController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>ViewCitiesController</servlet-name>
+    	<url-pattern>/ViewCitiesController</url-pattern>
     </servlet-mapping>
 </web-app>

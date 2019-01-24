@@ -17,9 +17,9 @@
 	<div class="overlay"></div>
 <div class="terminal">
   <h1>Error <span class="errorcode">404</span></h1>
-  <p class="output">Insufficient Balance!!</ü>
-  <p class="output">Please try <a href="index.jsp">Back to Home</a> </p>
-  <h1 style = "text-align:center">An error has occured</h1>
+  <p class="output">Error</ü>
+  <p class="output">Please try again </p>
+
 </div>
 
 </body>
