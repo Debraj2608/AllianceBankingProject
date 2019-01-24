@@ -42,7 +42,7 @@ function balance() {
 
 </div>
 	<%} else {%>
-	<%@include file="profileheader.jsp"%>
+	<%@include file="header.jsp"%><br><br>
 	<nav class="navbar navbar-default navbar-static-top">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->

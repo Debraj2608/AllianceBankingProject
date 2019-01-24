@@ -23,7 +23,12 @@
 
     <body style="background-color: lightblue;">
 	<%@include file="header.jsp"%>
-    <!-- Page Content -->
+    <div class="col-md-12 content">
+			<div class="panel panel-default">
+				<div class="panel-heading"></div>
+				<div class="panel-body">
+				<div>
+				
     <div class="container">
 	
       <!-- Page Heading/Breadcrumbs -->
@@ -153,8 +158,11 @@ Explore diverse openings with India's one of the largest bank.
       </div>
       <!-- /.container -->
     </footer>
-
+		        </div>		
+		    </div>
+		</div>
+	</div>
     
-   
+   <%@include file = "footer.jsp" %>
 </body>
 </html>

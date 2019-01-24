@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Profile</title>
+<title>Deposit</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
@@ -29,7 +29,7 @@ UserModel currentUser = (UserModel) session.getAttribute("userRecord");
 
 </div>
 	<%} else {%>
-	<%@include file="profileheader.jsp"%>
+	<%@include file="header.jsp"%><br><br>
 	<nav class="navbar navbar-default navbar-static-top">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->

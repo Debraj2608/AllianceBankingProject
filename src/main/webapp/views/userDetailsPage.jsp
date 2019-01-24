@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Registration</title>
+<title>Your Details</title>
 <style type="text/css">
 table 
 {
@@ -41,7 +41,7 @@ tr:nth-child(even)
 
 </head>
 <body>
-	<%@include file="header.jsp" %>
+	<%@include file="header.jsp" %><br><br>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	
 	<% UserModel user = (UserModel)request.getAttribute("userModel"); %>

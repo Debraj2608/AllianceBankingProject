@@ -52,7 +52,7 @@ tr:nth-child(even)
 
 </div>
 	<%} else {%>
-	<%@include file="profileheader.jsp"%>
+	<%@include file="header.jsp"%><br><br>
 	<nav class="navbar navbar-default navbar-static-top">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -135,7 +135,7 @@ tr:nth-child(even)
 		</div>
 		<div class="col-md-10 content">
 			<div class="panel panel-default">
-				<div class="panel-heading">Your Account</div>
+				<div class="panel-heading">My Account</div>
 				<div class="panel-body">
 				<% SimpleDateFormat sdf = new SimpleDateFormat("dd-MMMM-yyyy"); 
 				   String dateOfBirth = sdf.format(currentUser.getDob()); 

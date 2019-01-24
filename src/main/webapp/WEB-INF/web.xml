@@ -232,6 +232,13 @@
   	<servlet-name>ViewCitiesController</servlet-name>
   	<servlet-class>com.alliance.controller.ViewCitiesController</servlet-class>
   </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>ProfileController</display-name>
+  	<servlet-name>ProfileController</servlet-name>
+  	<servlet-class>com.alliance.controller.ProfileController</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>Register1Controller</servlet-name>
   	<url-pattern>/Register1Controller</url-pattern>
@@ -325,10 +332,7 @@
     	<servlet-name>DepositController</servlet-name>
     	<url-pattern>/DepositController</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-    	<servlet-name>SearchController</servlet-name>
-    	<url-pattern>/SearchController</url-pattern>
-    </servlet-mapping>
+    
     <servlet-mapping>
     	<servlet-name>AdminCitiesRedirectController</servlet-name>
     	<url-pattern>/AdminCitiesRedirectController</url-pattern>
@@ -344,5 +348,13 @@
     <servlet-mapping>
     	<servlet-name>ViewCitiesController</servlet-name>
     	<url-pattern>/ViewCitiesController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    	<servlet-name>ProfileController</servlet-name>
+    	<url-pattern>/ProfileController</url-pattern>
+    </servlet-mapping>
+     <servlet-mapping>
+    	<servlet-name>SearchController</servlet-name>
+    	<url-pattern>/SearchController</url-pattern>
     </servlet-mapping>
 </web-app>

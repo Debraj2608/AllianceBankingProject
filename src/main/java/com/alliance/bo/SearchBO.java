@@ -1,15 +1,15 @@
 package com.alliance.bo;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import com.alliance.dao.SearchDAO;
 import com.alliance.model.UserModel;
 
-public class SearchBO {
-	SearchDAO sd = new SearchDAO();
-	
-	public List<UserModel> getUserList(String stype, String user) {
+public class SearchBO 
+{
+	public List<UserModel> getUserList(String stype, String user) 
+	{
+		SearchDAO sd = new SearchDAO();
 		List<UserModel> lum= sd.getUserList(stype,user);
 		return lum;
 	}

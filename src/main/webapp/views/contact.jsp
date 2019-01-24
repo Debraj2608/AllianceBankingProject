@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>contact</title>
+<title>Contact Us</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="../css/index.css" />
@@ -16,7 +16,11 @@
 </head>
 <body style="background-color: lightblue;">
 	<%@include file="header.jsp"%>
-	<div>
+	<div class="col-md-12 content">
+			<div class="panel panel-default">
+				<div class="panel-heading"></div>
+				<div class="panel-body">
+				<div>
 		<h1 style="color:red;font-family:verdana;text-align:center"><i>CUSTOMER SERVICE AND GENERAL ENQUIRIES</i></h1><br>
 <h4 style = "text-align:center">
 <em>&nbsp;&nbsp;&nbsp;Call us between 8:00am - 10:00pm local time for general enquiries. We are available 24/7 for essential services below:</em></h4><br>
@@ -37,6 +41,9 @@
 &nbsp;&nbsp;&nbsp;&nbsp;<strong>Tel : 1-300-80-3388</strong><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<strong>Email : info@alliancefg.com</strong>
 	</div>
+		        </div>		
+		    </div>
+		</div>
 	<%@include file="footer.jsp"%>
 
 </body>

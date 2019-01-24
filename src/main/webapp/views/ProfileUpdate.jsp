@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Profile</title>
+<title>Profile Update</title>
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,7 +21,7 @@
 
 </head>
 <body>
-	<%@include file="profileheader.jsp"%>
+	<%@include file="header.jsp"%><br><br>
 	<nav class="navbar navbar-default navbar-static-top">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -88,15 +88,13 @@
 								{%>		
 								<li><a href="MyAccountController"><span
 										class="glyphicon glyphicon-pencil"></span> My Account </a></li>		
-								<li><a href="DeleteAccountController"><span
-										class="glyphicon glyphicon-pencil"></span> Delete Account </a></li>
+								
 								<%} else { %>
 								<li><a href="DepositPageRedirectController"><span
 										class="glyphicon glyphicon-pencil"></span> Deposit </a></li>		
 								<li><a href="MyAccountController"><span
 										class="glyphicon glyphicon-pencil"></span> My Account </a></li>		
-								<li><a href="DeleteAccountController"><span
-										class="glyphicon glyphicon-pencil"></span> Delete Account </a></li>
+								
 								<%} %>							
 							</ul>
 						</div>
@@ -106,7 +104,7 @@
 		</div>
 		<div class="col-md-10 content">
 			<div class="panel panel-default">
-				<div class="panel-heading">Your Account</div>
+				<div class="panel-heading">Update Profile</div>
 				<div class="panel-body">
 						<div class="container">
 		<div class='text-center'>

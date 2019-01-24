@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Profile</title>
+<title>Success</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
@@ -29,7 +29,7 @@ UserModel currentUser = (UserModel) session.getAttribute("userRecord");
 
 </div>
 	<%} else {%>
-	<%@include file="profileheader.jsp"%>
+	<%@include file="header.jsp"%><br><br>
 	<nav class="navbar navbar-default navbar-static-top">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -96,15 +96,13 @@ UserModel currentUser = (UserModel) session.getAttribute("userRecord");
 								{%>		
 								<li><a href="MyAccountController"><span
 										class="glyphicon glyphicon-pencil"></span> My Account </a></li>		
-								<li><a href="DeleteAccountController"><span
-										class="glyphicon glyphicon-pencil"></span> Delete Account </a></li>
+								
 								<%} else { %>
 								<li><a href="DepositPageRedirectController"><span
 										class="glyphicon glyphicon-pencil"></span> Deposit </a></li>		
 								<li><a href="MyAccountController"><span
 										class="glyphicon glyphicon-pencil"></span> My Account </a></li>		
-								<li><a href="DeleteAccountController"><span
-										class="glyphicon glyphicon-pencil"></span> Delete Account </a></li>
+								
 								<%} %>
 							</ul>
 						</div>

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Branch codes and cities</title>
+<title>Admin</title>
 
 <style type="text/css">
 table 
@@ -47,7 +47,7 @@ tr:nth-child(even)
 
 </div>
 	<%} else {%>
-	<%@include file="profileheader.jsp"%>
+	<%@include file="header.jsp"%><br><br>
 	<nav class="navbar navbar-default navbar-static-top">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -61,16 +61,21 @@ tr:nth-child(even)
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="userdetails.jsp"> User Profile </a>
+				<a class="navbar-brand" href="userdetails.jsp"> Admin </a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
-				<form class="navbar-form navbar-left" method="GET" role="search">
+				<form class="navbar-form navbar-left" method="post" action="SearchController">
 					<div class="form-group">
-						<input type="text" name="q" class="form-control"
-							placeholder="Search">
+					<select name="stype" class="form-control">
+					          <option value="actype">Account Type</option>
+  							  <option value="acid">Account ID</option>
+   							 <option value="uname">ClientName</option>
+ 					 </select>
+ 					 &nbsp;
+						<input type="text" name="user" class="form-control">
 					</div>
 					<button type="submit" class="btn btn-default">
 						<i class="glyphicon glyphicon-search"></i>
@@ -109,7 +114,7 @@ tr:nth-child(even)
 		</div>
 		<div class="col-md-10 content">
 			<div class="panel panel-default">
-				<div class="panel-heading">Your Account</div>
+				<div class="panel-heading">Add Branch</div>
 				<div class="panel-body">
 				<div id="fullform">
 		<form class="form-horizontal"  role="form"   action="GenerateBranchCodeController">

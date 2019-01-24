@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.*,com.alliance.model.*" language="java"
+	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -84,10 +84,33 @@ body {
 		</div>
 		<br />
 		<div class="header-left">
-			&nbsp;&nbsp;&nbsp; <a href="IndexController">Home</a> &nbsp;&nbsp;&nbsp; <a
-				href="ContactButtonController">Contact</a> &nbsp;&nbsp;&nbsp; <a
-				href="AboutButtonController">About</a> &nbsp;&nbsp;&nbsp; <a href="RegisterRedirectController">Register</a>
-			&nbsp;&nbsp;&nbsp; <a href="LoginRedirectController">Login</a> &nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp; <a href="IndexController">Home</a>
+			&nbsp;&nbsp;&nbsp; <a href="ContactButtonController">Contact</a>
+			&nbsp;&nbsp;&nbsp; <a href="AboutButtonController">About</a>
+			<%
+				UserModel um = null;
+				AdminModel am = null;
+				um = (UserModel) session.getAttribute("userRecord");
+				am = (AdminModel) session.getAttribute("admin");
+				if (um == null) {
+					if (am == null) {
+			%>
+			&nbsp;&nbsp;&nbsp; <a href="RegisterRedirectController">Register</a>
+			&nbsp;&nbsp;&nbsp; <a href="LoginRedirectController">Login</a>
+			<%
+				} else {
+			%>
+			&nbsp;&nbsp;&nbsp; <a href="ProfileController">Admin</a>
+			&nbsp;&nbsp;&nbsp; <a href="LogoutController">Log Out</a>
+			<%
+				}
+				} else {
+			%>
+			&nbsp;&nbsp;&nbsp; <a href="ProfileController"><%= um.getFirstName() %></a>
+			&nbsp;&nbsp;&nbsp; <a href="LogoutController">Log Out</a>
+			<%
+				}
+			%>
 		</div>
 	</div>
 

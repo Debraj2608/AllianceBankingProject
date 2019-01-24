@@ -102,7 +102,7 @@ function reg() {
 <% List<BranchModel> branchModel = (List) request.getAttribute("cityList"); %>
 
 <body style="background-color: lightblue;">
-	<%@include file="header.jsp"%>
+	<%@include file="header.jsp"%><br><br>
 	<div class="container">
 		<div class='text-center'>
 			<h1>Register Here</h1>
@@ -185,6 +185,17 @@ function reg() {
 					<input type="text" class="form-control" name="occupation"
 						id="occupation" placeholder="Enter Occupation">
 					<p id="p8" style="color: red"></p>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="actype" class="control-label col-sm-3">Account
+					Type:</label>
+				<div class="col-sm-8">
+					<select type = "text" class="form-control" name="actype" id="actype">
+						<option value="current">Current</option>
+						<option value="savings">Savings</option>
+					</select>
+					<p id="p9" style="color: red"></p>
 				</div>
 			</div>
 			<div class="form-group">

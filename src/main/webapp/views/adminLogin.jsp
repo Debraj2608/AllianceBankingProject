@@ -15,7 +15,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body style="background-color: lightblue;">
-	<%@include file="header.jsp"%>
+	<%@include file="header.jsp"%><br><br>
 	<div class="container">
 		<div class='text-center'>
 			<h1>Login Here</h1>

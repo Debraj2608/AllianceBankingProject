@@ -37,7 +37,7 @@ public class SearchController extends HttpServlet {
 	 if(lum.size()>0) {
 		request.setAttribute("ulist", lum);
 		request.setAttribute("stype", stype);
-		view=request.getRequestDispatcher("views/admincustsearch.jsp");
+		view=request.getRequestDispatcher("views/searchdetails.jsp");
 	 }
 	 else {
 		 view=request.getRequestDispatcher("views/error.jsp");

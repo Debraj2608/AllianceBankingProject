@@ -37,6 +37,7 @@ public class UserModel implements Serializable
 	private String customerID;
 	private String password;
 	private boolean fundsTransferStatus;
+	private String account_type;
 	private AccountModel accountModel;
 	public UserModel() 
 	{
@@ -147,6 +148,15 @@ public class UserModel implements Serializable
 	public void setAccountModel(AccountModel accountModel) 
 	{
 		this.accountModel = accountModel;
+	}
+	
+	public String getAccount_type() {
+		return account_type;
+	}
+	public void setAccount_type(String account_type) {
+		this.account_type = account_type;
 	}	
+	
+	
 	
 }

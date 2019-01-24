@@ -48,7 +48,7 @@ public class Register1Controller extends HttpServlet {
 		String city = request.getParameter("city");
 		String occupation = request.getParameter("occupation");
 		String password = request.getParameter("password1");
-		
+		String accountType = request.getParameter("actype");
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 		Date date = null;
 		try 
@@ -71,6 +71,7 @@ public class Register1Controller extends HttpServlet {
 		userModel.setOccupation(occupation);
 		userModel.setPassword(password);
 		userModel.setCustomerID(customerID);
+		userModel.setAccount_type(accountType);
 		HttpSession session = request.getSession();
 		request.setAttribute("userModel", userModel);
 		boolean status = register1BO.register1validate(userModel);

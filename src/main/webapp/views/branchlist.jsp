@@ -1,10 +1,11 @@
-<%@ page import="com.alliance.model.*, java.util.*" language="java"
+<%@ page import="com.alliance.model.*, java.util.*, java.text.* " language="java"
 	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Profile</title>
+<title>Admin</title>
+
 <style type="text/css">
 table 
 {
@@ -15,7 +16,7 @@ table
 
 td, th 
 {
-	border: 1px solid #dddddd;
+	border: 1px solid #dddddd;																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																			
 	text-align: left;
 	padding: 8px;
 }
@@ -25,6 +26,7 @@ tr:nth-child(even)
 	background-color: #dddddd;
 }
 </style>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -32,12 +34,7 @@ tr:nth-child(even)
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<%
-	UserModel currentUser = (UserModel) session.getAttribute("userRecord");
-AdminModel admin = (AdminModel)session.getAttribute("admin");
-%>
-
+<% AdminModel admin = (AdminModel)session.getAttribute("admin"); %>
 </head>
 <body>
 <% if(admin == null) 
@@ -50,7 +47,7 @@ AdminModel admin = (AdminModel)session.getAttribute("admin");
 
 </div>
 	<%} else {%>
-	<%@include file="profileheader.jsp"%>
+	<%@include file="header.jsp"%><br><br>
 	<nav class="navbar navbar-default navbar-static-top">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -64,16 +61,21 @@ AdminModel admin = (AdminModel)session.getAttribute("admin");
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="userdetails.jsp"> User Profile </a>
+				<a class="navbar-brand" href="userdetails.jsp"> Admin </a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
-				<form class="navbar-form navbar-left" method="GET" role="search">
+				<form class="navbar-form navbar-left" method="post" action="SearchController">
 					<div class="form-group">
-						<input type="text" name="q" class="form-control"
-							placeholder="Search">
+					<select name="stype" class="form-control">
+					           <option value="actype">Account Type</option>
+  							  <option value="acid">Account ID</option>
+   							 <option value="uname">ClientName</option>
+ 					 </select>
+ 					 &nbsp;
+						<input type="text" name="user" class="form-control">
 					</div>
 					<button type="submit" class="btn btn-default">
 						<i class="glyphicon glyphicon-search"></i>
@@ -98,13 +100,12 @@ AdminModel admin = (AdminModel)session.getAttribute("admin");
 							<ul class="nav navbar-nav">
 								<li class="active"><a href="#"><span
 										class="glyphicon glyphicon-dashboard"></span> Dashboard </a></li>
-								<li><a href="AdminDispController"><span
+							<li><a href="AdminDispController"><span
 										class="glyphicon glyphicon-pencil"></span> Link Accounts </a></li>	
 								<li><a href="AdminFundTransferActivationController"><span
 										class="glyphicon glyphicon-pencil"></span> Transfer Funds Requests </a></li>
 								<li><a href="AdminCitiesRedirectController"><span
 										class="glyphicon glyphicon-pencil"></span> Cities & Branch codes </a></li>		
-
 							</ul>
 						</div>
 					</nav>
@@ -115,12 +116,9 @@ AdminModel admin = (AdminModel)session.getAttribute("admin");
 			<div class="panel panel-default">
 				<div class="panel-heading">Cities and Branch Codes</div>
 				<div class="panel-body">
-				
-
-		<%
+				<%
 			List<BranchModel> branchList = (List) request.getAttribute("list");
 		%>
-
 		<table>
 		<tr>
 			<th>City</th>
@@ -137,10 +135,15 @@ AdminModel admin = (AdminModel)session.getAttribute("admin");
 		<%
 			}
 		%>
-	</table>
-	</div>
-	</div>
-	</div>
+	</table>	
+			</div>
+			</div>
+		
+			    </div>
+			
+		</div>
+	
+	
 	<%@include file="footer.jsp"%>
 	<%} %>
 </body>

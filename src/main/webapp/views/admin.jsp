@@ -26,7 +26,7 @@
 
 </div>
 	<%} else {%>
-	<%@include file="profileheader.jsp"%>
+	<%@include file="header.jsp"%><br><br>
 	<nav class="navbar navbar-default navbar-static-top">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -40,7 +40,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="userdetails.jsp"> User Profile </a>
+				<a class="navbar-brand" href="userdetails.jsp">Admin </a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -49,9 +49,9 @@
 				<form class="navbar-form navbar-left" method="post" action="SearchController">
 					<div class="form-group">
 					<select name="stype" class="form-control">
-					           <option value="actype">AccountType</option>
-  							  <option value="acid">accountID</option>
-   							 <option value="uname">clientName</option>
+					          <option value="actype">Account Type</option>
+  							  <option value="acid">Account ID</option>
+   							 <option value="uname">ClientName</option>
  					 </select>
  					 &nbsp;
 						<input type="text" name="user" class="form-control">
